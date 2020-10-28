@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Invezt</string>
+    <string name="analyze">Analyze</string>
+    <string name="learn">Learn</string>
 </resources>
