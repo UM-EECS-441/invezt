@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun toScan(view: View?) {
-        val intent = Intent(this, ScanActivity::class.java)
+        val intent = Intent(this, ComputerVisionActivity::class.java)
         startActivity(intent)
     }
 
