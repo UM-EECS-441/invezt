@@ -1,6 +1,8 @@
-            package edu.umich.invezt.invezt
+package edu.umich.invezt.invezt
 
 import java.util.*
+
+// Data used to initial expandable list view in LearnActivity
 internal object ExpandableListData {
     val data: HashMap<String, List<String>>
         get() {
@@ -32,7 +34,7 @@ internal object ExpandableListData {
             expandableListDetail["RESISTANCE LINES"] = resistanceLine
             expandableListDetail["BEAR FLAG"] = bearFlag
             expandableListDetail["BULL FLAG"] = bullFlag
-            expandableListDetail["CUP & HANDLE"] = cupFlag
+            expandableListDetail["CUP AND HANDLE"] = cupFlag
             expandableListDetail["CHANNEL"] = channelFlag
             expandableListDetail["ELLIOT WAVES"] = elliotFlag
 
