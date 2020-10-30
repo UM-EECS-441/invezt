@@ -76,6 +76,7 @@ public class cornerDetection {
             }
         }
 
+        //marks support and resistance lines
         for (int j = 0; j < width; j++){
             retBuffer[max_row * width + j] = (byte)255;
             retBuffer[min_row * width + j] = (byte)255;
