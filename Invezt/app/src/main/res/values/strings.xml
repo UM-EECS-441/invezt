@@ -9,4 +9,8 @@
     <string name="cup">CUP AND HANDLE</string>
     <string name="channel">CHANNEL</string>
     <string name="elliot">ELLIOT WAVES</string>
+    <string name="label_low_res">Low Resolution</string>
+    <string name="label_medium_res">Medium Resolution</string>
+    <string name="label_high_res">High Resolution</string>
+    <string name="switch_cv_mode">Computer Vision</string>
 </resources>
