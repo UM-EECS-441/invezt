@@ -13,4 +13,6 @@
     <string name="label_medium_res">Medium Resolution</string>
     <string name="label_high_res">High Resolution</string>
     <string name="switch_cv_mode">Computer Vision</string>
+    <string name="withoutSignin">Continue Without Signing In</string>
+    <string name="clientID">1057349198111-hak7ukkr1vupb2m5ritianlv0ot12d1q.apps.googleusercontent.com</string>
 </resources>
