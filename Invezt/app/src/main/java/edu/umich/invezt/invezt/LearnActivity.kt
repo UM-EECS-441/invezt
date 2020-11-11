@@ -110,7 +110,7 @@ class LearnActivity : AppCompatActivity() {
     // This includes all free patterns + patterns purchased
     // Response is formatted like this:
     //    {
-    //        "inveztid": "30bf2fda7ab84578433b1b87ff58236bb8c5e077f543fb52ab31a7061a7d0b16",
+    //        "inveztid": "a72f0f1c08fa7441cc23f80a1eebe579067c5b7884e336cf0cbb2adf7209d5d1",
     //        "patterns": [
     //            "Bear Flag",
     //            "Bull Flag",
