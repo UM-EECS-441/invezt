@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.widget.ExpandableListAdapter
 import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.toolbox.JsonObjectRequest
+import com.android.volley.toolbox.Volley
 import edu.umich.invezt.invezt.ExpandableListData.data
+import kotlin.collections.ArrayList
 
 class LearnActivity : AppCompatActivity() {
     private var expandableListView: ExpandableListView? = null
@@ -67,5 +70,71 @@ class LearnActivity : AppCompatActivity() {
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
         startActivity(intent)
+    }
+
+    // Gets the article information for the patterns
+    // Response is formatted like this:
+    //    {
+    //        "Bear Flag": {
+    //            "pattern_name": "Bear Flag",
+    //            "image": "bearflag.png",
+    //            "description": "This is some description of a bear flag to be edited later.",
+    //            "wiki_link": "https://speedtrader.com/how-to-trade-flag-patterns/",
+    //            "price": 0.0
+    //    },
+    //        "Bull Flag": {
+    //            "pattern_name": "Bull Flag",
+    //            "image": "bullflag.png",
+    //            "description": "This is some description of a bull flag to be edited later.",
+    //            "wiki_link": "https://speedtrader.com/how-to-trade-flag-patterns/",
+    //            "price": 0.0
+    //    },
+    private fun getArticles() {
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://167.71.176.115/pattern_articles/"
+
+        val request = JsonObjectRequest(url, null,
+            { response ->
+                // Assign the information to the xml parts here
+            },
+            {
+                toast("Error getting pattern information.")
+            }
+        )
+
+        queue.add(request)
+    }
+
+
+    // Gets all the patterns that a given user can access
+    // This includes all free patterns + patterns purchased
+    // Response is formatted like this:
+    //    {
+    //        "inveztid": "30bf2fda7ab84578433b1b87ff58236bb8c5e077f543fb52ab31a7061a7d0b16",
+    //        "patterns": [
+    //            "Bear Flag",
+    //            "Bull Flag",
+    //            "Channel",
+    //            "Cup and Handle",
+    //            "Elliott Wave",
+    //            "Resistance Line",
+    //            "Support Line"
+    //        ]
+    //    }
+
+    private fun getPatternsBought(inveztid: String) {
+        val queue = Volley.newRequestQueue(this)
+        val url = "https://167.71.176.115/patterns_bought/${inveztid}/"
+
+        val request = JsonObjectRequest(url, null,
+            { response ->
+
+            },
+            {
+                toast("Error getting patterns bought.")
+            }
+        )
+
+        queue.add(request)
     }
 }
