@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Invezt</string>
+    <string name="analyze">Analyze</string>
+    <string name="learn">Learn</string>
+    <string name="bear_flag">BEAR FLAG</string>
+    <string name="bull_flag">BULL FLAG</string>
+    <string name="resistance">RESISTANCE LINES</string>
+    <string name="support">SUPPORT LINES</string>
+    <string name="cup">CUP AND HANDLE</string>
+    <string name="channel">CHANNEL</string>
+    <string name="elliot">ELLIOT WAVES</string>
+    <string name="label_low_res">Low Resolution</string>
+    <string name="label_medium_res">Medium Resolution</string>
+    <string name="label_high_res">High Resolution</string>
+    <string name="switch_cv_mode">Computer Vision</string>
+</resources>

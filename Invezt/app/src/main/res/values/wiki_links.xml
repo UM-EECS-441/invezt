@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bear_link">https://en.wikipedia.org/wiki/Flag_and_pennant_patterns</string>
+    <string name="bull_link">https://en.wikipedia.org/wiki/Flag_and_pennant_patterns</string>
+    <string name="resist_link">https://en.wikipedia.org/wiki/Support_and_resistance</string>
+    <string name="support_link">https://en.wikipedia.org/wiki/Support_and_resistance</string>
+    <string name="cup_link">https://en.wikipedia.org/wiki/Cup_and_handle</string>
+    <string name="channel_link">https://en.wikipedia.org/wiki/Price_channels</string>
+    <string name="elliot_link">https://en.wikipedia.org/wiki/Elliott_wave_principle</string>
+
+</resources>
