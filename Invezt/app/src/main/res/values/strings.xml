@@ -15,4 +15,5 @@
     <string name="switch_cv_mode">Computer Vision</string>
     <string name="withoutSignin">Continue Without Signing In</string>
     <string name="clientID">1057349198111-hak7ukkr1vupb2m5ritianlv0ot12d1q.apps.googleusercontent.com</string>
+    <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
 </resources>
