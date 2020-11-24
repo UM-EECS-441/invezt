@@ -8,7 +8,7 @@ import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import edu.umich.invezt.invezt.ExpandableListData.data
+import java.util.HashMap
 import kotlin.collections.ArrayList
 
 class LearnActivity : AppCompatActivity() {
@@ -23,16 +23,7 @@ class LearnActivity : AppCompatActivity() {
         title = getString(R.string.app_name)
         expandableListView = findViewById(R.id.expendableList)
         if (expandableListView != null) {
-            val listData = data
-            titleList = ArrayList(listData.keys)
-            adapter = CustomExpandableListAdapter(this, titleList as ArrayList<String>, listData)
-            expandableListView!!.setAdapter(adapter)
-            expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
-                if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Links")) {
-                        handleClick((titleList as ArrayList<String>)[groupPosition])
-                    }
-                false
-            }
+            getArticles()
         }
     }
 
@@ -96,6 +87,25 @@ class LearnActivity : AppCompatActivity() {
         val request = JsonObjectRequest(url, null,
             { response ->
                 // Assign the information to the xml parts here
+                val listData = HashMap<String, List<String>>()
+                var keys = response.names()
+                for (i in 0 until keys.length()) {
+                    val menuItems: MutableList<String> = java.util.ArrayList()
+                    val item = response.getJSONObject(keys.getString(i))
+                    //menuItems.add(item.getString("pattern_name"))
+                    menuItems.add(item.getString("description"))
+                    listData[keys.getString(i)] = menuItems
+                }
+
+                titleList = ArrayList(listData.keys)
+                adapter = CustomExpandableListAdapter(this, titleList as ArrayList<String>, listData)
+                expandableListView!!.setAdapter(adapter)
+                expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
+                    if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Links")) {
+                        handleClick((titleList as ArrayList<String>)[groupPosition])
+                    }
+                    false
+                }
             },
             {
                 toast("Error getting pattern information.")
@@ -104,7 +114,6 @@ class LearnActivity : AppCompatActivity() {
 
         queue.add(request)
     }
-
 
     // Gets all the patterns that a given user can access
     // This includes all free patterns + patterns purchased

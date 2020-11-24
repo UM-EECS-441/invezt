@@ -33,7 +33,7 @@ class ScanActivity : AppCompatActivity() {
                 val patterns = Vector<String>()
                 val patternsReceived = response.getJSONArray("patterns") // "["Bear Flag", "Bull Flag"]"
                 // Add beginner dummy variable
-                patterns.addElement("--Select a pattern--")
+                //patterns.addElement("--Select a pattern--")
                 for (i in 0 until patternsReceived.length()) {
                     val patternName = patternsReceived[i].toString()
                     // Don't allow the users to scan for suppport and resistance lines
