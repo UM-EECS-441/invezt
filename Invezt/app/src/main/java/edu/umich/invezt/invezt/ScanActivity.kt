@@ -36,7 +36,7 @@ class ScanActivity : AppCompatActivity() {
                 //patterns.addElement("--Select a pattern--")
                 for (i in 0 until patternsReceived.length()) {
                     val patternName = patternsReceived[i].toString()
-                    // Don't allow the users to scan for suppport and resistance lines
+                    // Don't allow the users to scan for support and resistance lines
                     // They should automatically be detected
                     if (patternName != "Support Line" && patternName != "Resistance Line") {
                         patterns.addElement(patternName)

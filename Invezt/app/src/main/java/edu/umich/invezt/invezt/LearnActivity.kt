@@ -15,6 +15,7 @@ class LearnActivity : AppCompatActivity() {
     private var expandableListView: ExpandableListView? = null
     private var adapter: ExpandableListAdapter? = null
     private var titleList: List<String>? = null
+    private lateinit var wikiLinks: HashMap<String, String>
 
 // Initializes the expandable list view, sets adapter, and sets onClickListener for child items
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,25 +35,25 @@ class LearnActivity : AppCompatActivity() {
 
     when {
         pattern.equals(getString(R.string.bear_flag)) -> {
-            urlString = getString(R.string.bear_link)
+            urlString = wikiLinks[getString(R.string.bear_flag)]
         }
         pattern.equals(getString(R.string.bull_flag)) -> {
-            urlString = getString(R.string.bull_link)
+            urlString = wikiLinks[getString(R.string.bull_flag)]
         }
         pattern.equals(getString(R.string.resistance)) -> {
-            urlString = getString(R.string.resist_link)
+            urlString = wikiLinks[getString(R.string.resistance)]
         }
         pattern.equals(getString(R.string.support)) -> {
-            urlString = getString(R.string.support_link)
+            urlString = wikiLinks[getString(R.string.support)]
         }
-        pattern.equals(getString(R.string.elliot)) -> {
-            urlString = getString(R.string.elliot_link)
+        pattern.equals(getString(R.string.elliott)) -> {
+            urlString = wikiLinks[getString(R.string.elliott)]
         }
         pattern.equals(getString(R.string.cup)) -> {
-            urlString = getString(R.string.cup_link)
+            urlString = wikiLinks[getString(R.string.cup)]
         }
         pattern.equals(getString(R.string.channel)) -> {
-            urlString = getString(R.string.channel_link)
+            urlString = wikiLinks[getString(R.string.channel)]
         }
         else -> {
             return
@@ -88,12 +89,15 @@ class LearnActivity : AppCompatActivity() {
             { response ->
                 // Assign the information to the xml parts here
                 val listData = HashMap<String, List<String>>()
+                wikiLinks = HashMap<String, String>()
                 var keys = response.names()
                 for (i in 0 until keys.length()) {
                     val menuItems: MutableList<String> = java.util.ArrayList()
                     val item = response.getJSONObject(keys.getString(i))
                     //menuItems.add(item.getString("pattern_name"))
                     menuItems.add(item.getString("description"))
+                    wikiLinks[keys.getString(i)] = item.getString("wiki_link")
+                    menuItems.add("Link")
                     listData[keys.getString(i)] = menuItems
                 }
 
@@ -101,7 +105,7 @@ class LearnActivity : AppCompatActivity() {
                 adapter = CustomExpandableListAdapter(this, titleList as ArrayList<String>, listData)
                 expandableListView!!.setAdapter(adapter)
                 expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
-                    if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Links")) {
+                    if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Link")) {
                         handleClick((titleList as ArrayList<String>)[groupPosition])
                     }
                     false
