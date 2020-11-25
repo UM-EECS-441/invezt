@@ -1,8 +1,10 @@
 package edu.umich.invezt.invezt
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
@@ -21,6 +23,11 @@ class ScanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
         getPatterns()
+    }
+
+    fun toVision(view: View?) {
+        val intent = Intent(this, ComputerVisionActivity::class.java)
+        startActivity(intent)
     }
 
     // Gets a list of all patterns that need to be displayed. Stored in the member variable "patterns"
