@@ -13,10 +13,6 @@ import com.android.volley.toolbox.Volley.newRequestQueue
 import kotlinx.android.synthetic.main.activity_scan.*
 import java.util.*
 
-fun Context.toast(message: String) {
-    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-}
-
 class ScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
