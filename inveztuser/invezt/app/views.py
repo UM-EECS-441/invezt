@@ -5,8 +5,13 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from google.oauth2 import id_token
 from google.auth.transport import requests
+import stripe
 
 import hashlib, time
+
+stripe.api_key = "sk_test_51HmWsQLCRJXQF7TjecAKzl9UPOg37FAGvPmYh1DNbuN4kUz2yJunTO1mMeAPoNEtrtikfw9IOgWNiZOHdsf7cnIj00vkn65vLZ"
+
+stripe.api_version = "2020-08-27"
 
 @csrf_exempt
 def patterns_bought_GET(request, inveztid):
@@ -37,9 +42,10 @@ def patterns_bought_POST(request):
         return HttpResponse(status='404')
     json_data = json.loads(request.body)
     inveztid = json_data['inveztid']
-    pattern_name = json_data['pattern_name']
-    cursor = connection.cursor()
-    cursor.execute('INSERT INTO purchases (inveztid, pattern_name) VALUES ("{}","{}");'.format(inveztid, pattern_name))
+    patterns = json_data['patterns']
+    for pattern in patterns:
+        cursor = connection.cursor()
+        cursor.execute('INSERT INTO purchases (inveztid, pattern_name) VALUES ("{}","{}");'.format(inveztid, pattern))
     return JsonResponse({})
 
 
@@ -122,12 +128,15 @@ def add_user(request):
     tokenhash = hashlib.sha256(idToken.strip().encode('utf-8')).hexdigest()
 
     cursor = connection.cursor()
-    cursor.execute("SELECT inveztid FROM users WHERE idtoken ='"+ tokenhash + "';")
+    cursor.execute("SELECT inveztid, stripeid FROM users WHERE idtoken ='"+ tokenhash + "';")
 
-    inveztID = cursor.fetchone()
-    if inveztID is not None:
+    row = cursor.fetchone()
+    if row is not None:
+        response = {}
+        response['inveztID'] = row[0]
+        response['stripeID'] = row[1]
         # if we've already seen the token, return associated inveztID
-        return JsonResponse({'inveztID': inveztID[0]})
+        return JsonResponse(response)
 
     # If it's a new token, get username
     try:
@@ -138,8 +147,145 @@ def add_user(request):
     # Compute inveztID and add to database
     hashable = idToken + username + str(currentTimeStamp) + backendSecret
     inveztID = hashlib.sha256(hashable.strip().encode('utf-8')).hexdigest()
-    cursor.execute('INSERT INTO users (inveztid, idtoken, username) VALUES '
-                   '(%s, %s, %s);', (inveztID, tokenhash, username))
+    # Create new Stripe customer
+    response = stripe.Customer.create()
+    stripeID = response["id"]
+    # Add a new user to the database
+    cursor.execute('INSERT INTO users (inveztid, idtoken, username, stripeid) VALUES '
+                   '(%s, %s, %s, %s);', (inveztID, tokenhash, username, stripeID))
 
     # Return inveztID
-    return JsonResponse({'inveztID': inveztID})
+    response = {}
+    response['inveztID'] = inveztID
+    response['stripeID'] = stripeID
+    return JsonResponse(response)
+
+
+def create_stripe_key(request, inveztid, api_version):
+    if request.method != 'GET':
+        return HttpResponse(status='404')
+
+    cursor = connection.cursor()
+    cursor.execute('SELECT stripeid FROM users WHERE inveztid="{}";'.format(inveztid))
+    stripeid = cursor.fetchone()[0]
+
+    key = stripe.EphemeralKey.create(customer=stripeid, stripe_version=api_version)
+
+    return JsonResponse(key)
+
+@csrf_exempt
+def create_stripe_paymentIntent(request):
+    if request.method != 'POST':
+        return HttpResponse(status='404')
+
+    json_data = json.loads(request.body)
+
+    # Get list of patterns
+    patterns = json_data['patterns']
+    stripeID = json_data['stripeID']
+    payment_methodID = json_data['paymentMethodID']
+
+    patterns = str(patterns)
+
+    # Remove the [ ]
+    patterns = patterns[1:-1]
+
+    # We now have something like "pattern1", "pattern2", ...
+
+    price = 0.0
+
+    cursor = connection.cursor()
+    cursor.execute('SELECT price FROM patterns WHERE pattern_name IN ({});'.format(patterns))
+
+    rows = cursor.fetchall()
+    
+    for row in rows:
+        price = price + row[0]
+
+    # Convert dollars to cents
+    price = int(price * 100)
+
+    intent = stripe.PaymentIntent.create(
+            amount=price,
+            currency='usd',
+            customer=stripeID,
+            payment_method=payment_methodID
+            )
+   
+    payment_intentID = intent.id
+
+    return JsonResponse({'payment_intentID': payment_intentID})
+
+
+@csrf_exempt
+def confirm_payment(request):
+    if request.method != 'POST':
+        return HttpResponse(status='404')
+
+    json_data = json.loads(request.body)
+
+    payment_intentID = json_data['payment_intentID']
+
+    # Confirm payment
+    results = stripe.PaymentIntent.confirm(payment_intentID)
+
+    return JsonResponse({'status': results.status})
+
+# Add a pattern to a user's cart
+@csrf_exempt
+def add_to_cart(request):
+    if request.method != 'POST':
+        return HttpResponse(status='404')
+
+    json_data = json.loads(request.body)
+    inveztid = json_data["inveztid"]
+    pattern_name = json_data["pattern_name"]
+
+    cursor = connection.cursor()
+    cursor.execute('''INSERT INTO carts(inveztid, pattern_name)
+                      VALUES("{}","{}");'''.format(inveztid, pattern_name))
+
+    return JsonResponse({})
+
+
+# Get the cart for a given user
+def get_cart(request, inveztid):
+    if request.method != 'GET':
+        return HttpResponse(status='404')
+
+    cursor = connection.cursor()
+    cursor.execute('''SELECT pattern_name
+                      FROM carts
+                      WHERE inveztid="{}"
+                      ORDER BY pattern_name;'''.format(inveztid))
+
+    rows = cursor.fetchall()
+    
+    patterns = []
+
+    for row in rows:
+        patterns.append(row[0])
+
+    response = {}
+    response["patterns"] = patterns
+    return JsonResponse(response)
+
+
+# Remove a pattern from the cart
+@csrf_exempt
+def remove_from_cart(request):
+    if request.method != 'POST':
+        return HttpResponse(status='404')
+
+    json_data = json.loads(request.body)
+    inveztid = json_data["inveztid"]
+    patterns = json_data["patterns"]
+    patterns = str(patterns)
+    patterns = patterns[1:-1]
+
+    cursor = connection.cursor()
+    cursor.execute('''DELETE FROM carts
+                      WHERE inveztid="{}"
+                      AND pattern_name IN ({});'''.format(inveztid, patterns))
+
+    return JsonResponse({})

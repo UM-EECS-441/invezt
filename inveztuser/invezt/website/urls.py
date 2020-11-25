@@ -25,5 +25,11 @@ urlpatterns = [
     path('pattern_articles/', views.pattern_articles, name='pattern_articles'),
     path('pattern_draw/', views.pattern_draw, name='pattern_draw'),
     path('add_user/', views.add_user, name='add_user'),
+    path('create_stripe_key/<str:inveztid>/<str:api_version>/', views.create_stripe_key, name='create_stripe_key'),
+    path('create_stripe_paymentIntent/', views.create_stripe_paymentIntent, name='create_stripe_paymentIntent'),
+    path('confirm_payment/', views.confirm_payment, name='confirm_payment'),
+    path('add_to_cart/', views.add_to_cart, name='add_to_cart'),
+    path('get_cart/<str:inveztid>/', views.get_cart, name='get_cart'),
+    path('remove_from_cart/', views.remove_from_cart, name='remove_from_cart'),
 ]
 
