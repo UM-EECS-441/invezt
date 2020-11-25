@@ -8,6 +8,9 @@ import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import edu.umich.invezt.invezt.ExpandableListData.data
+import org.json.JSONArray
+import org.json.JSONObject
 import java.util.HashMap
 import kotlin.collections.ArrayList
 
@@ -62,6 +65,26 @@ class LearnActivity : AppCompatActivity() {
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlString))
         startActivity(intent)
+    }
+
+    // Adds a pattern to the cart of the given user
+    private fun addToCart(inveztid: String, pattern_name: String) {
+        val queue = Volley.newRequestQueue(this)
+        val url = "https//167.71.176.115/add_to_cart/"
+        val params = mapOf(
+            "inveztid" to inveztid,
+            "pattern_name" to pattern_name
+        )
+
+        val postRequest = JsonObjectRequest(url, JSONObject(params),
+            {
+                /*Possibly update UI to show that pattern is in cart*/
+            },
+            {
+                toast("Failed adding pattern to cart.")
+            })
+
+        queue.add(postRequest)
     }
 
     // Gets the article information for the patterns
