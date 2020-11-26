@@ -110,6 +110,30 @@ public class patternRecognizer {
     public Mat bull_bear_flag(Mat rgbMat, byte[] intensityBuffer, String pattern, int width, int height){
         // This will be the function that handles bull and bear flag detection
 
+        int max_row = 0;
+        int min_row = height - 1;
+        int min_col = 0;
+        int max_col = width-1;
+
+
+        int ex_x = 0;
+        int ex_y = 0;
+        int ex_val = 0;
+        // Need to find the right most extrema
+
+
+        for (int i = width-1; i > width-51; i--){
+            for (int j = 0; j < height; j++){
+                int pos = j*width + i;
+                int cur_val = (int)intensityBuffer[pos];
+
+                // If this point brighter than current extrema
+                if (cur_val > ex_val){
+
+                }
+            }
+        }
+
         return rgbMat;
     }
 
