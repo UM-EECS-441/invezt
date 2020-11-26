@@ -26,13 +26,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     var idToken: String? = null
+    var googleID: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Set the tokenID
+        // Set the tokenID and googleID
         idToken = intent.getStringExtra("IDTOKEN")
+        googleID = intent.getStringExtra("GOOGLEID")
 
         // If the user signed in, grab the inveztID from the backend
         if (idToken != null) {
@@ -66,7 +68,8 @@ class MainActivity : AppCompatActivity() {
             val url = "https://167.71.176.115/add_user/"
             val params = mapOf(
                 "clientID" to getString(R.string.clientID),
-                "idToken" to idToken
+                "idToken" to idToken,
+                "googleID" to googleID
             )
 
             val postRequest = JsonObjectRequest(url, JSONObject(params),
@@ -117,6 +120,8 @@ class MainActivity : AppCompatActivity() {
                 // If the user was signed in, tell them they are now signed out
                 if (inveztID != null) {
                     toast("Signed out")
+                    // Reset the inveztid
+                    inveztID = null
                 }
                 finish()
             }

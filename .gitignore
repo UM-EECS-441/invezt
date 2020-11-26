@@ -224,3 +224,4 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 iOSInjectionProject/
 Invezt/settings.gradle
+Invezt/.idea/gradle.xml

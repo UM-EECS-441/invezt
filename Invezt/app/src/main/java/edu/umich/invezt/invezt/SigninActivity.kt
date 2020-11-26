@@ -26,6 +26,7 @@ class SigninActivity : AppCompatActivity() {
     var RC_MAIN = 1
     var mGoogleSignInClient: GoogleSignInClient? = null
     var idToken: String? = null
+    var googleID: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,6 +77,8 @@ class SigninActivity : AppCompatActivity() {
             toast("Signed in as " + account!!.displayName)
             idToken = account!!.idToken
             resultIntent.putExtra("IDTOKEN", idToken)
+            googleID = account!!.id
+            resultIntent.putExtra("GOOGLEID", googleID)
             setResult(Activity.RESULT_OK, resultIntent)
             startActivity(resultIntent)
         } catch (e: ApiException) {
