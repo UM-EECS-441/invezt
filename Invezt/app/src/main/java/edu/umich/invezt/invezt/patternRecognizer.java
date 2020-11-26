@@ -22,36 +22,36 @@ public class patternRecognizer {
 
         for(int i = 0; i < width * height; ++i) {
             //Log.d("Test", "Intensity Value: " + i + ": " + intensityBuffer[i]);
-//            if(max_row == -1 && intensityBuffer[i] >= 50) {
-//                max_col = (int) i / width;
-//                max_row = (int) i % width;
-//            }
-//            else if(intensityBuffer[i] >= 50 && ((int) i / width) > min_row) {
-//                min_col = (int) i / width;
-//                min_row = (int) i % width;
-//            }
-
-            if(intensityBuffer[i] > 99 && max_i == -1) {
-                max_i = i;
+            if(max_row == -1 && intensityBuffer[i] >= 50) {
+                max_col = (int) i / width;
+                max_row = (int) i % width;
             }
-            if(intensityBuffer[i] > 99 && i > min_i) {
-                min_i = i;
+            else if(intensityBuffer[i] >= 50 && ((int) i / width) > min_row) {
+                min_col = (int) i / width;
+                min_row = (int) i % width;
             }
+//
+//            if(intensityBuffer[i] > 99 && max_i == -1) {
+//                max_i = i;
+//            }
+//            if(intensityBuffer[i] > 99 && i > min_i) {
+//                min_i = i;
+//            }
         }
 
-        Log.d("Test", "min row " + min_i + ", max row " + max_i);
-        Imgproc.circle(rgbMat, new Point(max_row, max_col), 10, new Scalar(255, 255, 255), 3);
-        Imgproc.circle(rgbMat, new Point(min_row, min_col), 10, new Scalar(255, 255, 255), 3);
+//        Log.d("Test", "min row " + min_i + ", max row " + max_i);
+//        Imgproc.circle(rgbMat, new Point(max_row, max_col), 10, new Scalar(255, 255, 255), 3);
+//        Imgproc.circle(rgbMat, new Point(min_row, min_col), 10, new Scalar(255, 255, 255), 3);
 
 
-//        // Mark the support and resistance lines
-//        Point pt1 = new Point(max_row - 2000, max_col);
-//        Point pt2 = new Point(max_row + 2000, max_col);
-//        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,0,0), 2);
-//
-//        pt1 = new Point(min_row - 2000, min_col);
-//        pt2 = new Point(min_row + 2000, min_col);
-//        Imgproc.line(rgbMat, pt1, pt2, new Scalar(0,255,0), 2);
+        // Mark the support and resistance lines
+        Point pt1 = new Point(max_row - 2000, max_col);
+        Point pt2 = new Point(max_row + 2000, max_col);
+        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
+
+        pt1 = new Point(min_row - 2000, min_col);
+        pt2 = new Point(min_row + 2000, min_col);
+        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
         return rgbMat;
     }
