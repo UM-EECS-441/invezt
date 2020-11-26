@@ -19,6 +19,8 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
 
+import edu.umich.invezt.invezt.patternRecognizer;
+
 
 public class cornerDetection {
 
@@ -27,6 +29,9 @@ public class cornerDetection {
 
         // convert from yuv image to rgb mat, then to grayscale
         Mat mat = Yuv.rgb(input);
+
+        byte[] test = new byte[(int) (mat.total() * mat.channels())];
+        mat.get(0,0, test);
 
         Mat matGray = new Mat();
         Imgproc.cvtColor(mat, matGray, Imgproc.COLOR_RGB2GRAY);
@@ -41,48 +46,30 @@ public class cornerDetection {
         byte[] rgb = new byte[size];
         rgbMat.get(0,0, rgb);
 
-        byte[] retBuffer = new byte[(width * height)];
+        byte[] intensityBuffer = new byte[(width * height)];
+
         // Convert values from rgbMat to Y bytes
 
-
-        int max_row = 0;
-        int min_row = height - 1;
-        int max_counter = 0;
-        int min_counter = 0;
-        int current_sum = 0;
-        int count = 0;
-
         for(int i = 0; i < size / 3; ++i) {
-            if(count % width == 0) current_sum = 0;
-            ++count;
             double R = rgb[3 * i];
             double G = rgb[3 * i + 1];
             double B = rgb[3 * i + 2];
             int y = (int) ((0.299 * R) + (0.587 * G) + (0.114 * B));
-            //if(y < 100) y = 0;
-            retBuffer[i] = (byte) y;
-
-            if (y > 150){
-                current_sum += 1;
-            }
-
-            if (current_sum > max_counter && i > max_row){
-                max_counter = current_sum;
-                max_row = i;
-            }
-            else if (current_sum > min_counter && i < min_row){
-                min_counter = current_sum;
-                min_row = i;
-            }
+            intensityBuffer[i] = (byte) y;
         }
 
-        //marks support and resistance lines
-        for (int j = 0; j < width; j++){
-            retBuffer[max_row * width + j] = (byte)255;
-            retBuffer[min_row * width + j] = (byte)255;
+        patternRecognizer patternRec = new patternRecognizer();
+        String pattern = "SUPPORT_RESISTANCE";
+        switch (pattern) {
+            case "SUPPORT_RESISTANCE":
+                mat = patternRec.support2(mat, intensityBuffer, pattern, width, height);
+                break;
         }
 
-        return ByteBuffer.wrap(retBuffer);
+        byte[] rgbBuffer = new byte[size];
+        mat.get(0, 0, rgbBuffer);
+
+        return ByteBuffer.wrap(rgbBuffer);
     }
 
     private Mat Harris(Mat Object, int thresh) {
