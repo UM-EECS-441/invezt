@@ -107,4 +107,10 @@ public class patternRecognizer {
         return rgbMat;
     }
 
+    public Mat bull_bear_flag(Mat rgbMat, byte[] intensityBuffer, String pattern, int width, int height){
+        // This will be the function that handles bull and bear flag detection
+
+        return rgbMat;
+    }
+
 }
