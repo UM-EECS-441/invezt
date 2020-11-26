@@ -115,24 +115,57 @@ public class patternRecognizer {
         int min_col = 0;
         int max_col = width-1;
 
+        // right most extrema variables
+        int r_x = 0;
+        int r_y = 0;
+        int r_val = 0;
+        // left most extrema variables
+        int l_x = 0;
+        int l_y = 0;
+        int l_val = 0;
 
-        int ex_x = 0;
-        int ex_y = 0;
-        int ex_val = 0;
-        // Need to find the right most extrema
-
-
-        for (int i = width-1; i > width-51; i--){
+        // Find left most extrema
+        for (int i = 0; i < width/20; i++){
             for (int j = 0; j < height; j++){
                 int pos = j*width + i;
                 int cur_val = (int)intensityBuffer[pos];
 
                 // If this point brighter than current extrema
-                if (cur_val > ex_val){
-
+                if (cur_val > l_val){
+                    l_val = cur_val;
+                    l_x = i;
+                    l_y = j;
                 }
             }
         }
+
+
+        // Find right most extrema
+        for (int i = width-1; i > width-width/20; i--){
+            for (int j = 0; j < height; j++){
+                int pos = j*width + i;
+                int cur_val = (int)intensityBuffer[pos];
+
+                // If this point brighter than current extrema
+                if (cur_val > r_val){
+                    r_val = cur_val;
+                    r_x = i;
+                    r_y = j;
+                }
+            }
+        }
+
+        // Connect left to right most extrema
+        // Mark the support and resistance lines
+        Point pt1 = new Point(l_y, l_x);
+        Point pt2 = new Point(r_y, r_x);
+        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
+
+        // draw support/resistance for right most extrema
+        pt1 = new Point(r_y, r_x - 50);
+        pt2 = new Point(r_y, r_x + 50);
+        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
+
 
         return rgbMat;
     }
