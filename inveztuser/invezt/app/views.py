@@ -101,6 +101,7 @@ def add_user(request):
     json_data = json.loads(request.body)
     clientID = json_data['clientID']   # the front end app's OAuth 2.0 Client ID
     idToken = json_data['idToken']     # user's OpenID ID Token, a JSon Web Token (JWT)
+    googleID = json_data['googleID']
 
     currentTimeStamp = time.time()
     backendSecret = "ifyougiveamouse"
@@ -122,20 +123,16 @@ def add_user(request):
         # Invalid or expired token
         return HttpResponse(status=511)  # 511 Network Authentication Required
 
-    # Check if token already exists in database
-    # Instead of the unlimited length ID Token,
-    # we work with a fixed-size SHA256 of the ID Token.
-    tokenhash = hashlib.sha256(idToken.strip().encode('utf-8')).hexdigest()
-
+    # Check if the googleID is in the database
     cursor = connection.cursor()
-    cursor.execute("SELECT inveztid, stripeid FROM users WHERE idtoken ='"+ tokenhash + "';")
+    cursor.execute("SELECT inveztid, stripeid FROM users WHERE googleid='{}';".format(googleID))
 
     row = cursor.fetchone()
+    #If the user is already in the database, return the associated user IDs
     if row is not None:
         response = {}
         response['inveztID'] = row[0]
         response['stripeID'] = row[1]
-        # if we've already seen the token, return associated inveztID
         return JsonResponse(response)
 
     # If it's a new token, get username
@@ -151,8 +148,8 @@ def add_user(request):
     response = stripe.Customer.create()
     stripeID = response["id"]
     # Add a new user to the database
-    cursor.execute('INSERT INTO users (inveztid, idtoken, username, stripeid) VALUES '
-                   '(%s, %s, %s, %s);', (inveztID, tokenhash, username, stripeID))
+    cursor.execute('INSERT INTO users (inveztid, googleid, username, stripeid) VALUES '
+                   '(%s, %s, %s, %s);', (inveztID, googleID, username, stripeID))
 
     # Return inveztID
     response = {}

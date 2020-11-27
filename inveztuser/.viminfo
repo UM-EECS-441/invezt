@@ -15,11 +15,11 @@
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1605813108,,"wq"
-:w
-|2,0,1605812151,,"w"
+|2,0,1606353107,,"wq"
 :q
-|2,0,1605774176,,"q"
+|2,0,1606352356,,"q"
+:w
+|2,0,1606352351,,"w"
 :Q
 |2,0,1605046344,,"Q"
 :except
@@ -59,38 +59,144 @@
 |3,1,36,0,1,0,1605043560,"/"
 
 # File marks:
-'0  158  11  ~/invezt/app/views.py
-|4,48,158,11,1605950270,"~/invezt/app/views.py"
-'1  287  11  ~/invezt/app/views.py
-|4,49,287,11,1605819055,"~/invezt/app/views.py"
-'2  287  11  ~/invezt/app/views.py
-|4,50,287,11,1605819055,"~/invezt/app/views.py"
-'3  220  11  ~/invezt/app/views.py
-|4,51,220,11,1605813108,"~/invezt/app/views.py"
-'4  220  11  ~/invezt/app/views.py
-|4,52,220,11,1605813108,"~/invezt/app/views.py"
-'5  220  11  ~/invezt/app/views.py
-|4,53,220,11,1605813108,"~/invezt/app/views.py"
-'6  220  11  ~/invezt/app/views.py
-|4,54,220,11,1605813108,"~/invezt/app/views.py"
-'7  30  37  ~/invezt/website/urls.py
-|4,55,30,37,1605812295,"~/invezt/website/urls.py"
-'8  206  27  ~/invezt/app/views.py
-|4,56,206,27,1605776585,"~/invezt/app/views.py"
-'9  198  27  ~/invezt/app/views.py
-|4,57,198,27,1605776585,"~/invezt/app/views.py"
+'0  114  44  ~/invezt/app/views.py
+|4,48,114,44,1606356845,"~/invezt/app/views.py"
+'1  128  44  ~/invezt/app/views.py
+|4,49,128,44,1606353107,"~/invezt/app/views.py"
+'2  128  44  ~/invezt/app/views.py
+|4,50,128,44,1606353107,"~/invezt/app/views.py"
+'3  152  77  ~/invezt/app/views.py
+|4,51,152,77,1606352356,"~/invezt/app/views.py"
+'4  152  77  ~/invezt/app/views.py
+|4,52,152,77,1606352356,"~/invezt/app/views.py"
+'5  152  77  ~/invezt/app/views.py
+|4,53,152,77,1606352356,"~/invezt/app/views.py"
+'6  152  77  ~/invezt/app/views.py
+|4,54,152,77,1606352356,"~/invezt/app/views.py"
+'7  33  78  ~/invezt/website/urls.py
+|4,55,33,78,1606335482,"~/invezt/website/urls.py"
+'8  155  11  ~/invezt/app/views.py
+|4,56,155,11,1605950270,"~/invezt/app/views.py"
+'9  158  11  ~/invezt/app/views.py
+|4,57,158,11,1605950270,"~/invezt/app/views.py"
 
 # Jumplist (newest first):
+-'  114  44  ~/invezt/app/views.py
+|4,39,114,44,1606356845,"~/invezt/app/views.py"
+-'  128  44  ~/invezt/app/views.py
+|4,39,128,44,1606353670,"~/invezt/app/views.py"
+-'  128  44  ~/invezt/app/views.py
+|4,39,128,44,1606353107,"~/invezt/app/views.py"
+-'  152  77  ~/invezt/app/views.py
+|4,39,152,77,1606352456,"~/invezt/app/views.py"
+-'  152  77  ~/invezt/app/views.py
+|4,39,152,77,1606352456,"~/invezt/app/views.py"
+-'  152  77  ~/invezt/app/views.py
+|4,39,152,77,1606352356,"~/invezt/app/views.py"
+-'  128  35  ~/invezt/app/views.py
+|4,39,128,35,1606350609,"~/invezt/app/views.py"
+-'  135  36  ~/invezt/app/views.py
+|4,39,135,36,1606350607,"~/invezt/app/views.py"
+-'  130  4  ~/invezt/app/views.py
+|4,39,130,4,1606350607,"~/invezt/app/views.py"
+-'  135  36  ~/invezt/app/views.py
+|4,39,135,36,1606350607,"~/invezt/app/views.py"
+-'  130  4  ~/invezt/app/views.py
+|4,39,130,4,1606350607,"~/invezt/app/views.py"
+-'  135  36  ~/invezt/app/views.py
+|4,39,135,36,1606350607,"~/invezt/app/views.py"
+-'  130  4  ~/invezt/app/views.py
+|4,39,130,4,1606350607,"~/invezt/app/views.py"
+-'  145  35  ~/invezt/app/views.py
+|4,39,145,35,1606350594,"~/invezt/app/views.py"
+-'  145  35  ~/invezt/app/views.py
+|4,39,145,35,1606350594,"~/invezt/app/views.py"
+-'  145  35  ~/invezt/app/views.py
+|4,39,145,35,1606350594,"~/invezt/app/views.py"
+-'  155  11  ~/invezt/app/views.py
+|4,39,155,11,1606349789,"~/invezt/app/views.py"
+-'  155  11  ~/invezt/app/views.py
+|4,39,155,11,1606349789,"~/invezt/app/views.py"
+-'  155  11  ~/invezt/app/views.py
+|4,39,155,11,1606349789,"~/invezt/app/views.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  33  78  ~/invezt/website/urls.py
+|4,39,33,78,1606335482,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1606324121,"~/invezt/website/urls.py"
 -'  158  11  ~/invezt/app/views.py
 |4,39,158,11,1605950270,"~/invezt/app/views.py"
+-'  158  11  ~/invezt/app/views.py
+|4,39,158,11,1605950270,"~/invezt/app/views.py"
+-'  158  11  ~/invezt/app/views.py
+|4,39,158,11,1605950270,"~/invezt/app/views.py"
+-'  158  11  ~/invezt/app/views.py
+|4,39,158,11,1605950270,"~/invezt/app/views.py"
+-'  284  11  ~/invezt/app/views.py
+|4,39,284,11,1605893442,"~/invezt/app/views.py"
+-'  287  11  ~/invezt/app/views.py
+|4,39,287,11,1605893442,"~/invezt/app/views.py"
+-'  284  11  ~/invezt/app/views.py
+|4,39,284,11,1605893442,"~/invezt/app/views.py"
+-'  287  11  ~/invezt/app/views.py
+|4,39,287,11,1605893442,"~/invezt/app/views.py"
+-'  284  11  ~/invezt/app/views.py
+|4,39,284,11,1605893442,"~/invezt/app/views.py"
+-'  287  11  ~/invezt/app/views.py
+|4,39,287,11,1605893442,"~/invezt/app/views.py"
 -'  287  11  ~/invezt/app/views.py
 |4,39,287,11,1605893442,"~/invezt/app/views.py"
 -'  287  11  ~/invezt/app/views.py
 |4,39,287,11,1605819055,"~/invezt/app/views.py"
+-'  287  11  ~/invezt/app/views.py
+|4,39,287,11,1605819055,"~/invezt/app/views.py"
+-'  217  11  ~/invezt/app/views.py
+|4,39,217,11,1605813111,"~/invezt/app/views.py"
+-'  220  11  ~/invezt/app/views.py
+|4,39,220,11,1605813111,"~/invezt/app/views.py"
+-'  217  11  ~/invezt/app/views.py
+|4,39,217,11,1605813111,"~/invezt/app/views.py"
+-'  220  11  ~/invezt/app/views.py
+|4,39,220,11,1605813111,"~/invezt/app/views.py"
+-'  217  11  ~/invezt/app/views.py
+|4,39,217,11,1605813111,"~/invezt/app/views.py"
 -'  220  11  ~/invezt/app/views.py
 |4,39,220,11,1605813111,"~/invezt/app/views.py"
 -'  220  11  ~/invezt/app/views.py
 |4,39,220,11,1605813111,"~/invezt/app/views.py"
+-'  220  11  ~/invezt/app/views.py
+|4,39,220,11,1605813111,"~/invezt/app/views.py"
+-'  220  11  ~/invezt/app/views.py
+|4,39,220,11,1605813111,"~/invezt/app/views.py"
+-'  220  11  ~/invezt/app/views.py
+|4,39,220,11,1605813108,"~/invezt/app/views.py"
 -'  220  11  ~/invezt/app/views.py
 |4,39,220,11,1605813108,"~/invezt/app/views.py"
 -'  30  37  ~/invezt/website/urls.py
@@ -101,6 +207,62 @@
 |4,39,30,37,1605812295,"~/invezt/website/urls.py"
 -'  30  37  ~/invezt/website/urls.py
 |4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
+-'  30  37  ~/invezt/website/urls.py
+|4,39,30,37,1605812295,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
 |4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
@@ -109,289 +271,128 @@
 |4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
 |4,39,29,36,1605812166,"~/invezt/website/urls.py"
--'  205  27  ~/invezt/app/views.py
-|4,39,205,27,1605807490,"~/invezt/app/views.py"
--'  205  27  ~/invezt/app/views.py
-|4,39,205,27,1605807490,"~/invezt/app/views.py"
--'  205  27  ~/invezt/app/views.py
-|4,39,205,27,1605807490,"~/invezt/app/views.py"
--'  206  27  ~/invezt/app/views.py
-|4,39,206,27,1605807477,"~/invezt/app/views.py"
--'  206  27  ~/invezt/app/views.py
-|4,39,206,27,1605807477,"~/invezt/app/views.py"
--'  206  27  ~/invezt/app/views.py
-|4,39,206,27,1605807477,"~/invezt/app/views.py"
--'  198  27  ~/invezt/app/views.py
-|4,39,198,27,1605776585,"~/invezt/app/views.py"
--'  198  27  ~/invezt/app/views.py
-|4,39,198,27,1605776585,"~/invezt/app/views.py"
--'  198  27  ~/invezt/app/views.py
-|4,39,198,27,1605776585,"~/invezt/app/views.py"
--'  198  27  ~/invezt/app/views.py
-|4,39,198,27,1605776585,"~/invezt/app/views.py"
--'  208  0  ~/invezt/app/views.py
-|4,39,208,0,1605774212,"~/invezt/app/views.py"
--'  200  0  ~/invezt/app/views.py
-|4,39,200,0,1605774212,"~/invezt/app/views.py"
--'  208  0  ~/invezt/app/views.py
-|4,39,208,0,1605774212,"~/invezt/app/views.py"
--'  200  0  ~/invezt/app/views.py
-|4,39,200,0,1605774212,"~/invezt/app/views.py"
--'  208  0  ~/invezt/app/views.py
-|4,39,208,0,1605774212,"~/invezt/app/views.py"
--'  200  0  ~/invezt/app/views.py
-|4,39,200,0,1605774212,"~/invezt/app/views.py"
--'  200  0  ~/invezt/app/views.py
-|4,39,200,0,1605774212,"~/invezt/app/views.py"
 -'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
+|4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
+|4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
+|4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
+|4,39,29,36,1605812166,"~/invezt/website/urls.py"
 -'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  29  36  ~/invezt/website/urls.py
-|4,39,29,36,1605774193,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  33  78  ~/invezt/website/urls.py
-|4,39,33,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  33  78  ~/invezt/website/urls.py
-|4,39,33,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  33  78  ~/invezt/website/urls.py
-|4,39,33,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  33  78  ~/invezt/website/urls.py
-|4,39,33,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605774178,"~/invezt/website/urls.py"
--'  203  0  ~/invezt/app/views.py
-|4,39,203,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  203  0  ~/invezt/app/views.py
-|4,39,203,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  203  0  ~/invezt/app/views.py
-|4,39,203,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  195  0  ~/invezt/app/views.py
-|4,39,195,0,1605774176,"~/invezt/app/views.py"
--'  282  43  ~/invezt/app/views.py
-|4,39,282,43,1605758373,"~/invezt/app/views.py"
--'  277  43  ~/invezt/app/views.py
-|4,39,277,43,1605758373,"~/invezt/app/views.py"
--'  258  43  ~/invezt/app/views.py
-|4,39,258,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  282  43  ~/invezt/app/views.py
-|4,39,282,43,1605758373,"~/invezt/app/views.py"
--'  277  43  ~/invezt/app/views.py
-|4,39,277,43,1605758373,"~/invezt/app/views.py"
--'  258  43  ~/invezt/app/views.py
-|4,39,258,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  282  43  ~/invezt/app/views.py
-|4,39,282,43,1605758373,"~/invezt/app/views.py"
--'  277  43  ~/invezt/app/views.py
-|4,39,277,43,1605758373,"~/invezt/app/views.py"
--'  258  43  ~/invezt/app/views.py
-|4,39,258,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  258  43  ~/invezt/app/views.py
-|4,39,258,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  253  43  ~/invezt/app/views.py
-|4,39,253,43,1605758373,"~/invezt/app/views.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
--'  32  78  ~/invezt/website/urls.py
-|4,39,32,78,1605758365,"~/invezt/website/urls.py"
+|4,39,29,36,1605812166,"~/invezt/website/urls.py"
 
 # History of marks within files (newest to oldest):
 
 > ~/invezt/app/views.py
-	*	1605896836	0
-	"	158	11
-	^	220	12
-	.	220	11
-	+	197	4
-	+	198	4
-	+	184	81
-	+	184	58
-	+	184	87
-	+	189	0
-	+	191	38
-	+	198	88
-	+	201	0
-	+	200	7
-	+	203	29
-	+	193	56
-	+	190	19
-	+	191	15
-	+	193	61
-	+	198	72
-	+	282	36
-	+	284	28
-	+	283	27
-	+	289	76
-	+	45	36
-	+	46	28
+	*	1606353762	0
+	"	114	44
+	^	128	45
+	.	128	44
 	+	47	7
 	+	48	7
 	+	47	0
 	+	48	115
-	+	178	29
-	+	189	0
-	+	193	9
-	+	209	20
+	+	175	29
+	+	186	0
+	+	190	9
+	+	206	20
+	+	175	0
+	+	176	0
 	+	178	0
-	+	179	0
 	+	181	0
-	+	184	0
-	+	191	0
+	+	188	0
+	+	192	0
+	+	194	0
 	+	195	0
 	+	197	0
-	+	198	0
+	+	199	0
 	+	200	0
-	+	202	0
-	+	203	0
-	+	208	0
-	+	176	11
+	+	205	0
+	+	173	11
+	+	175	0
+	+	176	0
 	+	178	0
-	+	179	0
 	+	181	0
-	+	184	0
-	+	191	0
+	+	188	0
+	+	192	0
+	+	194	0
 	+	195	0
 	+	197	0
-	+	198	0
+	+	199	0
 	+	200	0
-	+	202	0
-	+	203	0
-	+	195	14
-	+	206	19
-	+	205	29
-	+	209	23
-	+	188	27
-	+	206	27
-	+	136	30
-	+	131	44
-	+	133	6
-	+	137	36
-	+	139	35
-	+	160	34
-	+	161	31
+	+	192	14
+	+	203	19
+	+	202	29
+	+	206	23
+	+	185	27
+	+	203	27
+	+	134	30
+	+	128	389
+	+	130	6
+	+	135	36
+	+	136	35
+	+	157	34
+	+	158	31
+	+	210	0
+	+	208	28
+	+	182	36
+	+	132	9
+	+	149	11
+	+	152	79
+	+	183	50
+	+	209	43
+	+	212	31
+	+	212	184
+	+	214	33
+	+	222	40
+	+	224	52
+	+	225	0
+	+	224	103
+	+	224	47
+	+	227	75
+	+	227	106
+	+	227	71
+	+	227	13
+	+	229	53
+	+	221	0
+	+	226	20
+	+	229	48
 	+	213	0
-	+	211	28
-	+	185	36
-	+	134	9
-	+	152	11
-	+	155	79
-	+	186	50
-	+	212	43
-	+	215	31
-	+	215	184
-	+	217	33
-	+	225	40
-	+	227	52
+	+	214	61
+	+	212	32
+	+	214	61
+	+	225	0
+	+	227	67
 	+	228	0
-	+	227	103
-	+	227	47
-	+	230	75
-	+	230	106
-	+	230	71
-	+	230	13
-	+	232	53
-	+	224	0
-	+	229	20
-	+	232	48
-	+	216	0
-	+	217	61
-	+	215	32
-	+	217	61
-	+	228	0
-	+	230	67
-	+	231	0
-	+	220	11
+	+	217	11
+	+	124	140
+	+	128	86
+	+	128	108
+	+	128	66
+	+	129	0
+	+	135	36
+	+	128	54
+	+	145	0
+	+	151	56
+	+	134	73
+	+	135	35
+	+	135	37
+	+	131	74
+	+	128	45
+	+	135	35
+	+	136	0
+	+	152	60
+	+	124	123
+	+	126	26
+	+	128	93
+	+	104	35
+	+	125	0
+	+	128	44
 
 > ~/invezt/website/urls.py
-	*	1605812294	0
-	"	30	37
+	*	1606324906	0
+	"	33	78
 	^	30	38
 	.	30	37
 	+	36	0
