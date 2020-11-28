@@ -1,22 +1,14 @@
 package edu.umich.invezt.invezt.common.helpers;
 
 import android.media.Image;
-import android.util.Log;
 
 import com.quickbirdstudios.yuv2mat.Yuv;
 
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
-import org.opencv.core.Scalar;
-import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
-import org.opencv.core.Point;
 
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.nio.ByteBuffer;
 
 import edu.umich.invezt.invezt.patternRecognizer;
@@ -63,6 +55,9 @@ public class cornerDetection {
         switch (pattern) {
             case "SUPPORT_RESISTANCE":
                 mat = patternRec.support2(mat, intensityBuffer, pattern, width, height);
+                break;
+            case "BULL_BEAR_FLAGS":
+                mat = patternRec.bull_bear_flag(mat, intensityBuffer, pattern, width, height);
                 break;
         }
 

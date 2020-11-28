@@ -125,7 +125,7 @@ public class patternRecognizer {
         int l_val = 0;
 
         // Find left most extrema
-        for (int i = 0; i < width/20; i++){
+        for (int i = 0; i < width*0.20; i++){
             for (int j = 0; j < height; j++){
                 int pos = j*width + i;
                 int cur_val = (int)intensityBuffer[pos];
@@ -141,7 +141,7 @@ public class patternRecognizer {
 
 
         // Find right most extrema
-        for (int i = width-1; i > width-width/20; i--){
+        for (int i = width-1; i > width-width*0.20; i--){
             for (int j = 0; j < height; j++){
                 int pos = j*width + i;
                 int cur_val = (int)intensityBuffer[pos];
