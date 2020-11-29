@@ -3,6 +3,7 @@ package edu.umich.invezt.invezt
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.View
 import android.widget.ExpandableListAdapter
 import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
@@ -171,5 +172,11 @@ class LearnActivity : AppCompatActivity() {
         )
 
         queue.add(request)
+    }
+
+    // Navigates to CartActivity
+    fun toCart(view: View?) {
+        val intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
     }
 }
