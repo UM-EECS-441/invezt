@@ -2,6 +2,10 @@
     <string name="app_name">Invezt</string>
     <string name="analyze">Analyze</string>
     <string name="learn">Learn</string>
+    <string name="scan">Scan</string>
+    <string name="cart">Cart</string>
+    <string name="purchase">Purchase</string>
+    <string name="payment_method">Select Payment Method</string>
     <string name="bear_flag">Bear Flag</string>
     <string name="bull_flag">Bull Flag</string>
     <string name="resistance">Resistance Line</string>

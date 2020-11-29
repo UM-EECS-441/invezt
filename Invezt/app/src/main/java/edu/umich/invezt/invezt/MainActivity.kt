@@ -130,6 +130,7 @@ class MainActivity : AppCompatActivity() {
         CustomerSession.endCustomerSession()
     }
 
+    // Navigates to Cart Activity
     fun goToCart(view: View?) {
         val intent : Intent = Intent(this, CartActivity::class.java)
         startActivity(intent)

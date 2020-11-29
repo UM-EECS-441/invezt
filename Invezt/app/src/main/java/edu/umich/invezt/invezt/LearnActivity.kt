@@ -8,7 +8,6 @@ import android.widget.ExpandableListView
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import edu.umich.invezt.invezt.ExpandableListData.data
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.HashMap
@@ -111,13 +110,13 @@ class LearnActivity : AppCompatActivity() {
         val request = JsonObjectRequest(url, null,
             { response ->
                 // Assign the information to the xml parts here
+                // Initializes the expandable list with data from database
                 val listData = HashMap<String, List<String>>()
                 wikiLinks = HashMap<String, String>()
-                var keys = response.names()
+                val keys = response.names()
                 for (i in 0 until keys.length()) {
                     val menuItems: MutableList<String> = java.util.ArrayList()
                     val item = response.getJSONObject(keys.getString(i))
-                    //menuItems.add(item.getString("pattern_name"))
                     menuItems.add(item.getString("description"))
                     wikiLinks[keys.getString(i)] = item.getString("wiki_link")
                     menuItems.add("Link")

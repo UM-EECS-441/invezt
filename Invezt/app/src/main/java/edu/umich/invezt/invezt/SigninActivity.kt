@@ -51,6 +51,7 @@ class SigninActivity : AppCompatActivity() {
         })
     }
 
+    // Prompts user to sign in with google account
     private fun signIn() {
         val signInIntent = mGoogleSignInClient?.getSignInIntent()
         startActivityForResult(signInIntent, RC_SIGN_IN)
@@ -91,7 +92,7 @@ class SigninActivity : AppCompatActivity() {
         }
     }
 
-    public fun skipSignIn(view: View?) {
+    fun skipSignIn(view: View?) {
         // Sign the user out if they're signed in and trying to continue without signing in
         if (idToken != null) {
             val gso =

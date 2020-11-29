@@ -21,6 +21,7 @@ class ScanActivity : AppCompatActivity() {
         getPatterns()
     }
 
+    // Navigates to ComputerVision Activity
     fun toVision(view: View?) {
         val intent = Intent(this, ComputerVisionActivity::class.java)
         startActivity(intent)
