@@ -27,14 +27,14 @@
         android:networkSecurityConfig="@xml/network_security_config">
         <activity android:name=".CartActivity" />
         <activity android:name=".ComputerVisionActivity"
-            android:parentActivityName=".ScanActivity"></activity>
+            android:parentActivityName=".ScanActivity"/>
         <activity
             android:name=".LearnActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".ScanActivity"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".SigninActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
