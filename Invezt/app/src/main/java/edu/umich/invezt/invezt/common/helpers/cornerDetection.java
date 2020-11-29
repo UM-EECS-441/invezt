@@ -51,6 +51,8 @@ public class cornerDetection {
         }
 
         patternRecognizer patternRec = new patternRecognizer();
+
+        // Get the pattern string from the scroll selection bar
         String pattern = "SUPPORT_RESISTANCE";
         switch (pattern) {
             case "SUPPORT_RESISTANCE":
