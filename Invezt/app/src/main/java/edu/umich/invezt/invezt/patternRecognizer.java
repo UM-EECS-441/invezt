@@ -162,9 +162,9 @@ public class patternRecognizer {
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
         // draw support/resistance for right most extrema
-        pt1 = new Point(r_y-200, r_x);
-        pt2 = new Point(r_y+200, r_x);
-        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
+        Point pt3 = new Point(r_y-200, r_x);
+        Point pt4 = new Point(r_y+200, r_x);
+        Imgproc.line(rgbMat, pt3, pt4, new Scalar(255,255,255), 2);
 
 
         return rgbMat;
