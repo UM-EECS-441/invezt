@@ -5,6 +5,9 @@
     <string name="scan">Scan</string>
     <string name="cart">Cart</string>
     <string name="purchase">Purchase</string>
+    <string name="empty">Your cart is empty.</string>
+    <string name="price">$ 0.99</string>
+    <string name="remove">Remove</string>
     <string name="payment_method">Select Payment Method</string>
     <string name="patterns">Patterns</string>
     <string name="bear_flag">Bear Flag</string>

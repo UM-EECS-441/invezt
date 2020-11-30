@@ -31,6 +31,12 @@ class LearnActivity : AppCompatActivity() {
         }
     }
 
+    // Navigates to Cart Activity
+    fun toCart(view: View?) {
+        val intent : Intent = Intent(this, CartActivity::class.java)
+        startActivity(intent)
+    }
+
 // Checks if given pattern string has a info link
 // If link exist starts intent and navigates to web address
     private fun handleClick(pattern: String?) {
@@ -172,11 +178,5 @@ class LearnActivity : AppCompatActivity() {
         )
 
         queue.add(request)
-    }
-
-    // Navigates to CartActivity
-    fun toCart(view: View?) {
-        val intent = Intent(this, CartActivity::class.java)
-        startActivity(intent)
     }
 }

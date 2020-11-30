@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.stripe.android.*
@@ -14,7 +15,9 @@ import com.stripe.android.model.PaymentMethod
 import kotlin.Exception
 import edu.umich.invezt.invezt.App.Companion.inveztID
 import edu.umich.invezt.invezt.App.Companion.stripeID
+import kotlinx.android.synthetic.main.activity_cart.*
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 
 class CartActivity : AppCompatActivity() {
@@ -39,7 +42,8 @@ class CartActivity : AppCompatActivity() {
 
         // TODO: REMOVE HARD CODED CART FOR TESTING
         cart = JSONArray("[\"Channel\", \"Elliott Wave\"]")
-
+        val shouldbechannel = cart[0]
+        val shouldbeelliot = cart[1]
         stripe = Stripe(this, "pk_test_51HmWsQLCRJXQF7TjzWSdvAYoFkfqCFI4VleesPx0zfZSLnGPh45MCg6S4A5NchWLwCzamErq01luAde21KDAZdBB00SW6uNNBI", stripeID)
 
         setContentView(R.layout.activity_cart)
@@ -50,6 +54,16 @@ class CartActivity : AppCompatActivity() {
         )
 
         setupPaymentSession()
+
+        // Create Recycler View for list of patterns
+        try {
+            recyclerView.layoutManager =  LinearLayoutManager(this@CartActivity)
+            recyclerView.adapter = PatternsAdapter(cart)
+
+        } catch (e: JSONException) {
+
+            setContentView(R.layout.empty_cart)
+        }
     }
 
     private fun createPaymentSessionConfig(): PaymentSessionConfig {

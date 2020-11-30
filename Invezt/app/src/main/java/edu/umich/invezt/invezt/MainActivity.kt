@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
+import edu.umich.invezt.invezt.MainActivity
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.Size
@@ -19,6 +20,7 @@ import com.stripe.android.EphemeralKeyProvider
 import com.stripe.android.EphemeralKeyUpdateListener
 import edu.umich.invezt.invezt.App.Companion.inveztID
 import edu.umich.invezt.invezt.App.Companion.stripeID
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -137,14 +139,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     inner class MyEphemeralKeyProvider : EphemeralKeyProvider {
-        val url = "https://167.71.176.15/create_stripe_key/${inveztID}/${MainActivity.stripe_api_version}/"
+        val url = "https://167.71.176.15/create_stripe_key/${inveztID}/$stripe_api_version/"
 
         override fun createEphemeralKey(
             @Size(min = 4) apiVersion: String,
             keyUpdateListener: EphemeralKeyUpdateListener
         ) {
             val queue = Volley.newRequestQueue(this@MainActivity)
-            val url = "https://167.71.176.115/create_stripe_key/${inveztID}/${MainActivity.stripe_api_version}/"
+            val url = "https://167.71.176.115/create_stripe_key/${inveztID}/$stripe_api_version/"
 
             val getRequest = JsonObjectRequest(url, null,
                 { response ->

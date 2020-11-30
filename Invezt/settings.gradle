@@ -2,7 +2,7 @@ include ':app'
 rootProject.name = "Invezt"
 
 // You will need to put the path to your opencv sdk on this line, otherwise it will not build
-def opencvsdk='C:\\Users\\purpl\\Desktop\\EECS441\\Project\\opencv-4.5.0-android-sdk\\OpenCV-android-sdk'
+def opencvsdk='/Users/jumanahcolvin/CourseWork/OpenCV-android-sdk'
 //   // You can put declaration above into gradle.properties file instead (including file in HOME directory),
 //   // but without 'def' and apostrophe symbols ('): opencvsdk=<path_to_opencv_android_sdk_rootdir>
 include ':opencv_sdk'
