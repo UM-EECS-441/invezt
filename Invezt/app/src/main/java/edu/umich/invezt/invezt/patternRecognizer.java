@@ -49,9 +49,9 @@ public class patternRecognizer {
         Point pt2 = new Point(max_row + 2000, max_col);
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,0,0), 2);
 
-        pt1 = new Point(min_row - 2000, min_col);
-        pt2 = new Point(min_row + 2000, min_col);
-        Imgproc.line(rgbMat, pt1, pt2, new Scalar(0,255,0), 2);
+        Point pt3 = new Point(min_row - 2000, min_col);
+        Point pt4 = new Point(min_row + 2000, min_col);
+        Imgproc.line(rgbMat, pt3, pt4, new Scalar(0,255,0), 2);
 
         return rgbMat;
     }
@@ -100,9 +100,9 @@ public class patternRecognizer {
         Point pt2 = new Point(max_row, max_col + 50);
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
-        pt1 = new Point(min_row, min_col - 50);
-        pt2 = new Point(min_row, min_col + 50);
-        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
+        Point pt3 = new Point(min_row, min_col - 50);
+        Point pt4 = new Point(min_row, min_col + 50);
+        Imgproc.line(rgbMat, pt3, pt4, new Scalar(255,255,255), 2);
 
         return rgbMat;
     }
@@ -162,8 +162,8 @@ public class patternRecognizer {
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
         // draw support/resistance for right most extrema
-        Point pt3 = new Point(r_x-200, r_y);
-        Point pt4 = new Point(r_x+200, r_y);
+        Point pt3 = new Point(r_x, r_y-200);
+        Point pt4 = new Point(r_x, r_y+200);
         Imgproc.line(rgbMat, pt3, pt4, new Scalar(255,255,255), 2);
 
 
