@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -13,18 +14,12 @@ import com.android.volley.toolbox.Volley.newRequestQueue
 import kotlinx.android.synthetic.main.activity_scan.*
 import java.util.*
 
-class ScanActivity : AppCompatActivity() {
+/*class ScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
         getPatterns()
-    }
-
-    // Navigates to ComputerVision Activity
-    fun toVision(view: View?) {
-        val intent = Intent(this, ComputerVisionActivity::class.java)
-        startActivity(intent)
     }
 
     // Gets a list of all patterns that need to be displayed. Stored in the member variable "patterns"
@@ -55,6 +50,49 @@ class ScanActivity : AppCompatActivity() {
             }
         )
 
-        queue.add(getRequest)
+        queue.add(getRequest)*/
+
+class ScanActivity : AppCompatActivity() {
+    //var pattern: String? = null
+    var spinner: Spinner? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_scan)
+
+        spinner = findViewById(R.id.patterns_spinner)
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        /*ArrayAdapter.createFromResource(
+            this,
+            R.array.patterns_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            // Apply the adapter to the spinner
+            spinner.adapter = adapter
+        }
+        spinner.prompt = "Title";*/
+
+    }
+
+//Bull Flag
+//Bear Flag
+    //Resistance Line
+    //Support Line
+
+    fun toCV(view: View?){
+        val intent = Intent(this, ComputerVisionActivity::class.java)
+        var pattern = "BULL_BEAR_FLAGS"
+
+        when (spinner!!.selectedItem.toString()){
+            "Support Line" -> pattern="SUPPORT_RESISTANCE"
+            "Resistance Line" -> pattern="SUPPORT_RESISTANCE"
+            "Bear Flag" -> pattern="BULL_BEAR_FLAGS"
+            "Bull Flag" -> pattern="BULL_BEAR_FLAGS"
+        }
+
+        intent.putExtra("PATTERN_NAME", pattern);
+        Log.d("PATTERN", pattern)
+        startActivity(intent)
     }
 }
