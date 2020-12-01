@@ -53,10 +53,10 @@ public class cornerDetection {
         patternRecognizer patternRec = new patternRecognizer();
 
         // Get the pattern string from the scroll selection bar
-        String pattern = "SUPPORT_RESISTANCE";
+        String pattern = "BULL_BEAR_FLAGS";
         switch (pattern) {
             case "SUPPORT_RESISTANCE":
-                mat = patternRec.support2(mat, intensityBuffer, pattern, width, height);
+                mat = patternRec.support_resistance(mat, intensityBuffer, pattern, width, height);
                 break;
             case "BULL_BEAR_FLAGS":
                 mat = patternRec.bull_bear_flag(mat, intensityBuffer, pattern, width, height);
