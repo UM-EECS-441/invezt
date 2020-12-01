@@ -7,15 +7,14 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.ar.core.ArCoreApk;
 import com.google.ar.core.Camera;
 import com.google.ar.core.CameraConfig;
@@ -37,7 +36,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
-
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -56,7 +54,6 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
 
     private static final float RADIANS_TO_DEGREES = (float) (180 / Math.PI);
 
-    private String PATTERN = "SUPPORT_RESISTANCE";
     // This app demonstrates two approaches to obtaining image data accessible on CPU:
     // 1. Access the CPU image directly from ARCore. This approach delivers a frame without latency
     //    (if available), but currently is lower resolution than the GPU image.
@@ -78,7 +75,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
     }
 
     // Default CPU image is low resolution.
-    private ImageResolution cpuResolution = ImageResolution.MEDIUM_RESOLUTION;
+    private ImageResolution cpuResolution = ImageResolution.LOW_RESOLUTION;
 
     // Session management and rendering.
     private GLSurfaceView surfaceView;
@@ -124,10 +121,8 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
         setContentView(R.layout.activity_computer_vision);
         surfaceView = findViewById(R.id.surfaceview);
         surfaceView = findViewById(R.id.surfaceview);
-
-        // cvModeSwitch = (Switch) findViewById(R.id.switch_cv_mode);
-        //
-        // cvModeSwitch.setOnCheckedChangeListener(this::onCVModeChanged);
+        cvModeSwitch = (Switch) findViewById(R.id.switch_cv_mode);
+        //cvModeSwitch.setOnCheckedChangeListener(this::onCVModeChanged);
 //    focusModeSwitch = (Switch) findViewById(R.id.switch_focus_mode);
 //    focusModeSwitch.setOnCheckedChangeListener(this::onFocusModeChanged);
 
@@ -141,7 +136,6 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
         surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
         surfaceView.setWillNotDraw(false);
 
-        PATTERN = getIntent().getStringExtra("PATTERN_NAME");
         //getLifecycle().addObserver(renderFrameTimeHelper);
         //getLifecycle().addObserver(cpuImageFrameTimeHelper);
         installRequested = false;
@@ -207,14 +201,11 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
                 Log.e(TAG, "Exception creating session", exception);
                 return;
             }
-
-
         }
 
         obtainCameraConfigs();
-        onCameraConfigChanged(cpuMediumResolutionCameraConfig);
 
-        // cvModeSwitch.setChecked(cpuImageRenderer.getSplitterPosition() < 0.5f);
+        cvModeSwitch.setChecked(cpuImageRenderer.getSplitterPosition() < 0.5f);
         //focusModeSwitch.setChecked(config.getFocusMode() != Config.FocusMode.FIXED);
         //config.setFocusMode(Config.FocusMode.AUTO);
         config.setFocusMode(Config.FocusMode.AUTO);
@@ -345,7 +336,6 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
             if (isCVModeOn) {
                 processedImageBytesGrayscale =
                         cornerDetector.detect(
-                                PATTERN,
                                 image.getWidth(),
                                 image.getHeight(),
                                 image.getPlanes()[0].getRowStride(),
@@ -466,6 +456,16 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
                 }
             }
 
+            // Let the user know that the camera config is set.
+            String toastMessage =
+                    "Set the camera config with CPU image resolution of "
+                            + cameraConfig.getImageSize()
+                            + " and fps "
+                            + cameraConfig.getFpsRange()
+                            + ".";
+            Toast toast = Toast.makeText(this, toastMessage, Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.BOTTOM, /* xOffset= */ 0, /* yOffset=*/ 250);
+            toast.show();
         }
     }
 
@@ -493,7 +493,6 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
             cpuHighResolutionCameraConfig =
                     getCameraConfigWithSelectedResolution(
                             cameraConfigs, /*ImageResolution*/ ImageResolution.HIGH_RESOLUTION);
-
             // Update the radio buttons with the resolution info.
             updateRadioButtonText(
                     R.id.radio_low_res, cpuLowResolutionCameraConfig, getString(R.string.label_low_res));
@@ -503,8 +502,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
                     getString(R.string.label_medium_res));
             updateRadioButtonText(
                     R.id.radio_high_res, cpuHighResolutionCameraConfig, getString(R.string.label_high_res));
-
-            cpuResolution = ImageResolution.MEDIUM_RESOLUTION;
+            cpuResolution = ImageResolution.LOW_RESOLUTION;
         }
     }
 
@@ -529,8 +527,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
                         return Integer.compare(p1.getImageSize().getHeight(), p2.getImageSize().getHeight());
                     }
                 });
-        CameraConfig cameraConfig = cameraConfigsByResolution.get(1);
-
+        CameraConfig cameraConfig = cameraConfigsByResolution.get(0);
         switch (resolution) {
             case LOW_RESOLUTION:
                 cameraConfig = cameraConfigsByResolution.get(0);
