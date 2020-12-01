@@ -223,9 +223,5 @@ fastlane/test_output
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
 iOSInjectionProject/
-Invezt/.idea/codeStyles/Project.xml
+Invezt/settings.gradle
 Invezt/.idea/gradle.xml
-Invezt/.idea/misc.xml
-Invezt/.idea/gradle.xml
-*.xml
-*.gradle

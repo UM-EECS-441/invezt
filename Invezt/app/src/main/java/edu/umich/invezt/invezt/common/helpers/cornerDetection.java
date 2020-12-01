@@ -8,23 +8,25 @@ import com.quickbirdstudios.yuv2mat.Yuv;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.core.Scalar;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
+import org.opencv.core.Point;
 
+
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
-
-import edu.umich.invezt.invezt.patternRecognizer;
 
 
 public class cornerDetection {
 
-    public synchronized ByteBuffer detect(String pattern_name, int width, int height, int stride, Image input) {
+    public synchronized ByteBuffer detect(int width, int height, int stride, Image input) {
         System.loadLibrary("opencv_java4");
 
         // convert from yuv image to rgb mat, then to grayscale
         Mat mat = Yuv.rgb(input);
-
-        byte[] test = new byte[(int) (mat.total() * mat.channels())];
-        mat.get(0,0, test);
 
         Mat matGray = new Mat();
         Imgproc.cvtColor(mat, matGray, Imgproc.COLOR_RGB2GRAY);
@@ -39,40 +41,48 @@ public class cornerDetection {
         byte[] rgb = new byte[size];
         rgbMat.get(0,0, rgb);
 
-        byte[] intensityBuffer = new byte[(width * height)];
-
+        byte[] retBuffer = new byte[(width * height)];
         // Convert values from rgbMat to Y bytes
 
+
+        int max_row = 0;
+        int min_row = height - 1;
+        int max_counter = 0;
+        int min_counter = 0;
+        int current_sum = 0;
+        int count = 0;
+
         for(int i = 0; i < size / 3; ++i) {
+            if(count % width == 0) current_sum = 0;
+            ++count;
             double R = rgb[3 * i];
             double G = rgb[3 * i + 1];
             double B = rgb[3 * i + 2];
             int y = (int) ((0.299 * R) + (0.587 * G) + (0.114 * B));
-            intensityBuffer[i] = (byte) y;
+            //if(y < 100) y = 0;
+            retBuffer[i] = (byte) y;
+
+            if (y > 150){
+                current_sum += 1;
+            }
+
+            if (current_sum > max_counter && i > max_row){
+                max_counter = current_sum;
+                max_row = i;
+            }
+            else if (current_sum > min_counter && i < min_row){
+                min_counter = current_sum;
+                min_row = i;
+            }
         }
 
-        patternRecognizer patternRec = new patternRecognizer();
-
-        // Get the pattern string from the scroll selection bar
-        //System.out.println(pattern_name);
-        //Log.d("Pattern", "name =  " + pattern_name);
-        if (pattern_name == ""){
-            Log.d("Pattern", "PATTERN NOT FOUND");
-        }
-        switch (pattern_name) {
-            case "BULL_BEAR_FLAGS":
-                mat = patternRec.bull_bear_flag(mat, intensityBuffer, width, height);
-                break;
-            case "SUPPORT_RESISTANCE": // if support_resistance selected, or default, do support_resistance
-            default:
-                mat = patternRec.support_resistance(mat, intensityBuffer, width, height);
-                break;
+        //marks support and resistance lines
+        for (int j = 0; j < width; j++){
+            retBuffer[max_row * width + j] = (byte)255;
+            retBuffer[min_row * width + j] = (byte)255;
         }
 
-        byte[] rgbBuffer = new byte[size];
-        mat.get(0, 0, rgbBuffer);
-
-        return ByteBuffer.wrap(rgbBuffer);
+        return ByteBuffer.wrap(retBuffer);
     }
 
     private Mat Harris(Mat Object, int thresh) {
