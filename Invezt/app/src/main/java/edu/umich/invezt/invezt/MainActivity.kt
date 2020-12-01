@@ -1,42 +1,29 @@
 package edu.umich.invezt.invezt
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
-import edu.umich.invezt.invezt.MainActivity
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.Size
-import org.json.JSONException
-import org.json.JSONObject
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.stripe.android.CustomerSession
-import com.stripe.android.EphemeralKeyProvider
-import com.stripe.android.EphemeralKeyUpdateListener
-import edu.umich.invezt.invezt.App.Companion.inveztID
-import edu.umich.invezt.invezt.App.Companion.stripeID
-
+import org.json.JSONException
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        val stripe_api_version = "2020-08-27"
+        var inveztID: String? = null
     }
 
     var idToken: String? = null
-    var googleID: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Set the tokenID and googleID
+        // Set the tokenID
         idToken = intent.getStringExtra("IDTOKEN")
-        googleID = intent.getStringExtra("GOOGLEID")
 
         // If the user signed in, grab the inveztID from the backend
         if (idToken != null) {
@@ -49,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 // Navigates to ScanActivity
-    fun toScan(view: View?) {
+    fun toScan(view: View?) {           // ComputerVisionActivity
         val intent = Intent(this, ScanActivity::class.java)
         startActivity(intent)
     }
@@ -70,26 +57,20 @@ class MainActivity : AppCompatActivity() {
             val url = "https://167.71.176.115/add_user/"
             val params = mapOf(
                 "clientID" to getString(R.string.clientID),
-                "idToken" to idToken,
-                "googleID" to googleID
+                "idToken" to idToken
             )
 
             val postRequest = JsonObjectRequest(url, JSONObject(params),
                 { response ->
                     try {
-                        // Store the inveztID and stripeID
+                        // Store the inveztID
                         inveztID = response.getString("inveztID")
-                        stripeID = response.getString("stripeID")
 
                         // User registration failed
                         if (inveztID == null) {
                             toast("Error adding user. Please try again.")
                             setContentView(R.layout.activity_signin)
                         }
-                        // Create a Stripe Customer Session for the user
-                        CustomerSession.initCustomerSession(this, MyEphemeralKeyProvider())
-
-
                     } catch (e: JSONException) {
                         // user registration failed.
                         toast("Server Error.")
@@ -122,43 +103,9 @@ class MainActivity : AppCompatActivity() {
                 // If the user was signed in, tell them they are now signed out
                 if (inveztID != null) {
                     toast("Signed out")
-                    // Reset the inveztid
-                    inveztID = null
                 }
                 finish()
             }
-
-        // End Stripe Customer Section
-        CustomerSession.endCustomerSession()
-    }
-
-    // Navigates to Cart Activity
-    fun goToCart(view: View?) {
-        val intent : Intent = Intent(this, CartActivity::class.java)
-        startActivity(intent)
-    }
-
-    inner class MyEphemeralKeyProvider : EphemeralKeyProvider {
-        val url = "https://167.71.176.15/create_stripe_key/${inveztID}/$stripe_api_version/"
-
-        override fun createEphemeralKey(
-            @Size(min = 4) apiVersion: String,
-            keyUpdateListener: EphemeralKeyUpdateListener
-        ) {
-            val queue = Volley.newRequestQueue(this@MainActivity)
-            val url = "https://167.71.176.115/create_stripe_key/${inveztID}/$stripe_api_version/"
-
-            val getRequest = JsonObjectRequest(url, null,
-                { response ->
-                    keyUpdateListener.onKeyUpdate(response.toString())
-                },
-                { error ->
-                    keyUpdateListener.onKeyUpdateFailure(0, error.message ?: "")
-                }
-            )
-
-            queue.add(getRequest)
-        }
     }
 
 }
