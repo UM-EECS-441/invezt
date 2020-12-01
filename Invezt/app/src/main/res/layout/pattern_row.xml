@@ -32,6 +32,7 @@
         android:layout_marginBottom="8dp"
         android:padding="0dp"
         android:text="@string/remove"
+        android:onClick="onClickRemoveFromCart"
         app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/patternName"

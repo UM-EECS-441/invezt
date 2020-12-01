@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.stripe.android.*
@@ -42,8 +43,6 @@ class CartActivity : AppCompatActivity() {
 
         // TODO: REMOVE HARD CODED CART FOR TESTING
         cart = JSONArray("[\"Channel\", \"Elliott Wave\"]")
-        val shouldbechannel = cart[0]
-        val shouldbeelliot = cart[1]
         stripe = Stripe(this, "pk_test_51HmWsQLCRJXQF7TjzWSdvAYoFkfqCFI4VleesPx0zfZSLnGPh45MCg6S4A5NchWLwCzamErq01luAde21KDAZdBB00SW6uNNBI", stripeID)
 
         setContentView(R.layout.activity_cart)
@@ -224,6 +223,13 @@ class CartActivity : AppCompatActivity() {
         queue.add(postRequest)
     }
 
+    fun onClickRemoveFromCart(view: View?){
+        val patternName = "Elliott Wave"
+        // TODO: properly extract selected pattern name
+        val id = inveztID
+
+       removeFromCart(id.toString(), patternName as JSONArray)
+    }
 
     // Gets the cart for a given user
     private fun getCart(inveztid: String) {

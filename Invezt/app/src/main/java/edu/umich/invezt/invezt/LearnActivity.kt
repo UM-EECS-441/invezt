@@ -1,5 +1,4 @@
 package edu.umich.invezt.invezt
-
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONArray
+import edu.umich.invezt.invezt.App.Companion.inveztID
 import org.json.JSONObject
 import java.util.HashMap
 import kotlin.collections.ArrayList
@@ -127,6 +127,7 @@ class LearnActivity : AppCompatActivity() {
                     menuItems.add(item.getString("description"))
                     wikiLinks[keys.getString(i)] = item.getString("wiki_link")
                     menuItems.add("Link")
+                    menuItems.add("Add")
                     listData[keys.getString(i)] = menuItems
                 }
 
@@ -136,6 +137,10 @@ class LearnActivity : AppCompatActivity() {
                 expandableListView!!.setOnChildClickListener { _, _, groupPosition, childPosition, _ ->
                     if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Link")) {
                         handleClick((titleList as ArrayList<String>)[groupPosition])
+                    } else if (listData[(titleList as ArrayList<String>)[groupPosition]]!!.get(childPosition).equals("Add")) {
+                        val patternName = (this.adapter as CustomExpandableListAdapter).getGroup(groupPosition).toString()
+                        val id = inveztID.toString()
+                        addToCart(id, patternName)
                     }
                     false
                 }

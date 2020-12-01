@@ -18,6 +18,10 @@ class PatternsAdapter(private val cart: JSONArray) : RecyclerView.Adapter<Patter
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.patternName.text = cart[position].toString()
         holder.price.text = "$ 0.99"
+        holder.patternName.tag = position
+        holder.itemView.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount() = cart.length()
@@ -26,5 +30,7 @@ class PatternsAdapter(private val cart: JSONArray) : RecyclerView.Adapter<Patter
         val patternName: TextView = itemView.findViewById(R.id.patternName)
         val price: TextView = itemView.findViewById(R.id.price)
     }
+
+
 
 }
