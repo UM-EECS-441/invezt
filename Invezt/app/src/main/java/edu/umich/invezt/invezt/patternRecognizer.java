@@ -76,7 +76,7 @@ public class patternRecognizer {
             ++col;
 
             int value = (int) intensityBuffer[i];
-            if (value > -100){
+            if (value > 0){
                 current_sum += 1;
             }
 
@@ -96,12 +96,12 @@ public class patternRecognizer {
         Log.d("Test", "min row " + min_row + "max row " + max_row);
 
         // Mark the support and resistance lines
-        Point pt1 = new Point(max_row, max_col - 50);
-        Point pt2 = new Point(max_row, max_col + 50);
+        Point pt1 = new Point(max_col - 2000, max_row);
+        Point pt2 = new Point(max_col + 2000, max_row);
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
-        Point pt3 = new Point(min_row, min_col - 50);
-        Point pt4 = new Point(min_row, min_col + 50);
+        Point pt3 = new Point(min_col - 2000, min_row);
+        Point pt4 = new Point(min_col + 2000, min_row);
         Imgproc.line(rgbMat, pt3, pt4, new Scalar(255,255,255), 2);
 
         return rgbMat;
