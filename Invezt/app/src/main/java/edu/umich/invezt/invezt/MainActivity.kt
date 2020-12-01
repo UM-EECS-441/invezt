@@ -1,11 +1,7 @@
 package edu.umich.invezt.invezt
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
-import edu.umich.invezt.invezt.MainActivity
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.Size
@@ -49,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 // Navigates to ScanActivity
-    fun toScan(view: View?) {
+    fun toScan(view: View?) {           // ComputerVisionActivity
         val intent = Intent(this, ScanActivity::class.java)
         startActivity(intent)
     }
@@ -88,7 +84,6 @@ class MainActivity : AppCompatActivity() {
                         }
                         // Create a Stripe Customer Session for the user
                         CustomerSession.initCustomerSession(this, MyEphemeralKeyProvider())
-
 
                     } catch (e: JSONException) {
                         // user registration failed.
