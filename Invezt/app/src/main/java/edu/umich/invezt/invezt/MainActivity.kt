@@ -1,17 +1,15 @@
 package edu.umich.invezt.invezt
 
-import android.app.Activity
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import org.json.JSONException
-import org.json.JSONObject
+import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import org.json.JSONException
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -38,8 +36,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 // Navigates to ScanActivity
-    fun toScan(view: View?) {
-        val intent = Intent(this, ComputerVisionActivity::class.java)
+    fun toScan(view: View?) {           // ComputerVisionActivity
+        val intent = Intent(this, ScanActivity::class.java)
         startActivity(intent)
     }
 

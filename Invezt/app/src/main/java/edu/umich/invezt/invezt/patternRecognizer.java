@@ -9,7 +9,7 @@ import org.opencv.imgproc.Imgproc;
 
 public class patternRecognizer {
 
-    public Mat support2(Mat rgbMat, byte[] intensityBuffer, String pattern, int width, int height) {
+    public Mat support2(Mat rgbMat, byte[] intensityBuffer, int width, int height) {
         int max_row = -1;
         int min_row = -1;
 
@@ -56,7 +56,7 @@ public class patternRecognizer {
         return rgbMat;
     }
 
-    public Mat support_resistance(Mat rgbMat, byte[] intensityBuffer, String pattern, int width, int height) {
+    public Mat support_resistance(Mat rgbMat, byte[] intensityBuffer, int width, int height) {
         int max_row = 0;
         int min_row = height - 1;
         int max_counter = 0;
@@ -107,7 +107,7 @@ public class patternRecognizer {
         return rgbMat;
     }
 
-    public Mat bull_bear_flag(Mat rgbMat, byte[] intensityBuffer, String pattern, int width, int height){
+    public Mat bull_bear_flag(Mat rgbMat, byte[] intensityBuffer, int width, int height){
         // This will be the function that handles bull and bear flag detection
 
         int max_row = 0;

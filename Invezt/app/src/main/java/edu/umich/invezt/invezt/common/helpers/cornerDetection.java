@@ -1,6 +1,7 @@
 package edu.umich.invezt.invezt.common.helpers;
 
 import android.media.Image;
+import android.util.Log;
 
 import com.quickbirdstudios.yuv2mat.Yuv;
 
@@ -16,7 +17,7 @@ import edu.umich.invezt.invezt.patternRecognizer;
 
 public class cornerDetection {
 
-    public synchronized ByteBuffer detect(int width, int height, int stride, Image input) {
+    public synchronized ByteBuffer detect(String pattern_name, int width, int height, int stride, Image input) {
         System.loadLibrary("opencv_java4");
 
         // convert from yuv image to rgb mat, then to grayscale
@@ -53,13 +54,18 @@ public class cornerDetection {
         patternRecognizer patternRec = new patternRecognizer();
 
         // Get the pattern string from the scroll selection bar
-        String pattern = "SUPPORT_RESISTANCE";
-        switch (pattern) {
-            case "SUPPORT_RESISTANCE":
-                mat = patternRec.support_resistance(mat, intensityBuffer, pattern, width, height);
-                break;
+        //System.out.println(pattern_name);
+        //Log.d("Pattern", "name =  " + pattern_name);
+        if (pattern_name == ""){
+            Log.d("Pattern", "PATTERN NOT FOUND");
+        }
+        switch (pattern_name) {
             case "BULL_BEAR_FLAGS":
-                mat = patternRec.bull_bear_flag(mat, intensityBuffer, pattern, width, height);
+                mat = patternRec.bull_bear_flag(mat, intensityBuffer, width, height);
+                break;
+            case "SUPPORT_RESISTANCE": // if support_resistance selected, or default, do support_resistance
+            default:
+                mat = patternRec.support_resistance(mat, intensityBuffer, width, height);
                 break;
         }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="patterns_array" style="textColor:#FFFFFF">
-        <item><b>PATTERNS</b></item>
-        <item>SUPPORT/RESISTANCE</item>
+        <item>Support/Resistance</item>
+        <item>Bear/Bull Flag</item>
     </string-array>
 </resources>

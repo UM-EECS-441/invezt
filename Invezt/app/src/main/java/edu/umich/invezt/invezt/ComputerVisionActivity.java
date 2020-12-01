@@ -7,14 +7,15 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Size;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.ar.core.ArCoreApk;
 import com.google.ar.core.Camera;
 import com.google.ar.core.CameraConfig;
@@ -36,6 +37,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.List;
+
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
@@ -54,6 +56,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
 
     private static final float RADIANS_TO_DEGREES = (float) (180 / Math.PI);
 
+    private String PATTERN = "SUPPORT_RESISTANCE";
     // This app demonstrates two approaches to obtaining image data accessible on CPU:
     // 1. Access the CPU image directly from ARCore. This approach delivers a frame without latency
     //    (if available), but currently is lower resolution than the GPU image.
@@ -138,6 +141,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
         surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY);
         surfaceView.setWillNotDraw(false);
 
+        PATTERN = getIntent().getStringExtra("PATTERN_NAME");
         //getLifecycle().addObserver(renderFrameTimeHelper);
         //getLifecycle().addObserver(cpuImageFrameTimeHelper);
         installRequested = false;
@@ -341,6 +345,7 @@ public class ComputerVisionActivity extends AppCompatActivity implements GLSurfa
             if (isCVModeOn) {
                 processedImageBytesGrayscale =
                         cornerDetector.detect(
+                                PATTERN,
                                 image.getWidth(),
                                 image.getHeight(),
                                 image.getPlanes()[0].getRowStride(),
