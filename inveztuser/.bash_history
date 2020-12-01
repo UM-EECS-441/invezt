@@ -175,3 +175,58 @@ exit
 mysql -u inveztuser -p
 ls
 mysql -u inveztuser -p
+git status
+vim invezt/app/views.py 
+vim invezt/website/urls.py 
+sudo systemctl restart gunicorn
+sudo systemctl restart nginx
+vim invezt/app/views.py 
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+vim invezt/app/views.py 
+vim invezt/website/urls.py 
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+vim invezt/app/views.py 
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+vim invezt/website/urls.py 
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+vim invezt/app/views.py 
+sudo systemctl restart nginx
+sudo systemctl restart gunicorn
+vim invezt/app/views.py 
+ls
+cd invezt/
+ls
+cd app
+ls
+touch stripe_handler.py
+vim stripe_handler.py 
+vim views.py
+cd ..
+vim website/urls.py 
+vim app/views.py 
+vim website/urls.py 
+vim app/views.py 
+vim invezt/app/views.py 
+mysql -u inveztuser -p
+vim invezt/app/views.py 
+ls
+cd ..
+ls
+git status
+git add .
+sudo git add .
+sudo git commit -m "Backend updates, including Google Pay implementation"
+sudo git push
+sudo git pull origin master
+git status
+sudo git push
+ls
+vim invezt/website/urls.py 
+mysql -u inveztuser -p
+sudo systemctl restart gunicorn
+sudo systemctl restart nginx
+mysql -u inveztuser -p

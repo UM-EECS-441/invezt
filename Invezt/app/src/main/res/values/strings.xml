@@ -2,17 +2,26 @@
     <string name="app_name">Invezt</string>
     <string name="analyze">Analyze</string>
     <string name="learn">Learn</string>
-    <string name="bear_flag">BEAR FLAG</string>
-    <string name="bull_flag">BULL FLAG</string>
-    <string name="resistance">RESISTANCE LINES</string>
-    <string name="support">SUPPORT LINES</string>
-    <string name="cup">CUP AND HANDLE</string>
-    <string name="channel">CHANNEL</string>
-    <string name="elliot">ELLIOT WAVES</string>
+    <string name="scan">Scan</string>
+    <string name="cart">Cart</string>
+    <string name="purchase">Purchase</string>
+    <string name="empty">Your cart is empty.</string>
+    <string name="price">$ 0.99</string>
+    <string name="remove">Remove</string>
+    <string name="payment_method">Select Payment Method</string>
+    <string name="patterns">Patterns</string>
+    <string name="bear_flag">Bear Flag</string>
+    <string name="bull_flag">Bull Flag</string>
+    <string name="resistance">Resistance Line</string>
+    <string name="support">Support Line</string>
+    <string name="cup">Cup and Handle</string>
+    <string name="channel">Channel</string>
+    <string name="elliott">Elliott Wave</string>
     <string name="label_low_res">Low Resolution</string>
     <string name="label_medium_res">Medium Resolution</string>
     <string name="label_high_res">High Resolution</string>
     <string name="switch_cv_mode">Computer Vision</string>
     <string name="withoutSignin">Continue Without Signing In</string>
     <string name="clientID">1057349198111-hak7ukkr1vupb2m5ritianlv0ot12d1q.apps.googleusercontent.com</string>
+    <string name="payments_show_name" translatable="false">Successfully received payment data for %s!</string>
 </resources>
