@@ -84,11 +84,15 @@ class ScanActivity : AppCompatActivity() {
         val intent = Intent(this, ComputerVisionActivity::class.java)
         var pattern = "BULL_BEAR_FLAGS"
 
-        when (spinner!!.selectedItem.toString()){
+        /*when (spinner!!.selectedItem.toString()){
             "Support Line" -> pattern="SUPPORT_RESISTANCE"
             "Resistance Line" -> pattern="SUPPORT_RESISTANCE"
             "Bear Flag" -> pattern="BULL_BEAR_FLAGS"
             "Bull Flag" -> pattern="BULL_BEAR_FLAGS"
+        }*/
+        when (spinner!!.selectedItem.toString()){
+            "Support/Resistance" -> pattern="SUPPORT_RESISTANCE"
+            "Bear/Bull Flag" -> pattern="BULL_BEAR_FLAGS"
         }
 
         intent.putExtra("PATTERN_NAME", pattern);
