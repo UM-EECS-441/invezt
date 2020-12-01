@@ -29,6 +29,7 @@ class CartActivity : AppCompatActivity() {
     private var paymentIntentID : String = ""
     private var isPaymentReadyToCharge : Boolean = false
     private var cart : JSONArray = JSONArray()
+//    private var cart : JSONArray = JSONArray("[\"Channel\", \"Elliott Wave\"]")
     lateinit var stripe : Stripe
     val requestcode = 4242
 
@@ -42,7 +43,6 @@ class CartActivity : AppCompatActivity() {
         }
 
         // TODO: REMOVE HARD CODED CART FOR TESTING
-        cart = JSONArray("[\"Channel\", \"Elliott Wave\"]")
         stripe = Stripe(this, "pk_test_51HmWsQLCRJXQF7TjzWSdvAYoFkfqCFI4VleesPx0zfZSLnGPh45MCg6S4A5NchWLwCzamErq01luAde21KDAZdBB00SW6uNNBI", stripeID)
 
         setContentView(R.layout.activity_cart)

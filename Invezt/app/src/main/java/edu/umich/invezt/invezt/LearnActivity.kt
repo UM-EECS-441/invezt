@@ -76,7 +76,7 @@ class LearnActivity : AppCompatActivity() {
     // Adds a pattern to the cart of the given user
     private fun addToCart(inveztid: String, pattern_name: String) {
         val queue = Volley.newRequestQueue(this)
-        val url = "https//167.71.176.115/add_to_cart/"
+        val url = "https://167.71.176.115/add_to_cart/"
         val params = mapOf(
             "inveztid" to inveztid,
             "pattern_name" to pattern_name
@@ -84,7 +84,7 @@ class LearnActivity : AppCompatActivity() {
 
         val postRequest = JsonObjectRequest(url, JSONObject(params),
             {
-                /*Possibly update UI to show that pattern is in cart*/
+                toast("Pattern is in cart.")
             },
             {
                 toast("Failed adding pattern to cart.")
