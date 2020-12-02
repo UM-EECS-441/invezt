@@ -129,8 +129,13 @@ class MainActivity : AppCompatActivity() {
 
     // Navigates to Cart Activity
     fun goToCart(view: View?) {
-        val intent : Intent = Intent(this, CartActivity::class.java)
-        startActivity(intent)
+        if (inveztID == null) {
+            toast("You must sign-in first")
+        }
+        else {
+            val intent : Intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     inner class MyEphemeralKeyProvider : EphemeralKeyProvider {

@@ -33,8 +33,13 @@ class LearnActivity : AppCompatActivity() {
 
     // Navigates to Cart Activity
     fun toCart(view: View?) {
-        val intent : Intent = Intent(this, CartActivity::class.java)
-        startActivity(intent)
+        if (inveztID == null) {
+            toast("You must sign-in first")
+        }
+        else {
+            val intent : Intent = Intent(this, CartActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 // Checks if given pattern string has a info link
@@ -75,6 +80,11 @@ class LearnActivity : AppCompatActivity() {
 
     // Adds a pattern to the cart of the given user
     private fun addToCart(inveztid: String, pattern_name: String) {
+        if (inveztID == null) {
+            toast("You must sign-in first")
+            return
+        }
+
         val queue = Volley.newRequestQueue(this)
         val url = "https://167.71.176.115/add_to_cart/"
         val params = mapOf(
