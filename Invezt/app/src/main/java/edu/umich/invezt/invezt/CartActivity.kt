@@ -54,15 +54,7 @@ class CartActivity : AppCompatActivity() {
 
         setupPaymentSession()
 
-        // Create Recycler View for list of patterns
-        try {
-            recyclerView.layoutManager =  LinearLayoutManager(this@CartActivity)
-            recyclerView.adapter = PatternsAdapter(cart)
-
-        } catch (e: JSONException) {
-
-            setContentView(R.layout.empty_cart)
-        }
+        getCart(inveztID!!)
     }
 
     private fun createPaymentSessionConfig(): PaymentSessionConfig {
@@ -240,6 +232,16 @@ class CartActivity : AppCompatActivity() {
             { response ->
                 // holds the list of patterns in this user's cart
                 cart = response.getJSONArray("patterns")
+
+                // Create Recycler View for list of patterns
+                try {
+                    recyclerView.layoutManager =  LinearLayoutManager(this@CartActivity)
+                    recyclerView.adapter = PatternsAdapter(cart)
+
+                } catch (e: JSONException) {
+
+                    setContentView(R.layout.empty_cart)
+                }
             },
             {
                 toast("Error getting your cart.")
