@@ -67,8 +67,29 @@ public class patternRecognizer {
         int max_col = 0;
         int min_col = 0;
 
+        for (int i = 0; i < width; i++){
+            for (int j = 0; j < height; j++){
+                int pos = j*width + i;
+                int value = (int) intensityBuffer[pos];
+                if (value > 0){
+                    current_sum += 1;
+                }
 
-        for(int i = 0; i < width * height; ++i) {
+
+                if (current_sum > max_counter && j > max_row){
+                    max_counter = current_sum;
+                    max_row = curr_row;
+                    max_col = col % width;
+                }
+                else if (current_sum > min_counter && j < min_row){
+                    min_counter = current_sum;
+                    min_row = curr_row;
+                    min_col = col % width;
+                }
+            }
+        }
+
+        /*for(int i = 0; i < width * height; ++i) {
             if(col % width == 0) {
                 current_sum = 0;
                 ++curr_row;
@@ -91,7 +112,7 @@ public class patternRecognizer {
                 min_row = curr_row;
                 min_col = col % width;
             }
-        }
+        }*/
 
         Log.d("Test", "min row " + min_row + "max row " + max_row);
 
