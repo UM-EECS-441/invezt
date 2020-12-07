@@ -9,100 +9,53 @@ import org.opencv.imgproc.Imgproc;
 
 public class patternRecognizer {
 
-    public Mat support2(Mat rgbMat, byte[] intensityBuffer, int width, int height) {
-        int max_row = -1;
-        int min_row = -1;
-
-        int max_col = -1;
-        int min_col = -1;
-
-        int max_i = -1;
-        int min_i = -1;
-
-
-        for(int i = 0; i < width * height; ++i) {
-            //Log.d("Test", "Intensity Value: " + i + ": " + intensityBuffer[i]);
-            if(max_row == -1 && intensityBuffer[i] >= 50) {
-                max_col = (int) i / width;
-                max_row = (int) i % width;
-            }
-            else if(intensityBuffer[i] >= 50 && ((int) i / width) > min_row) {
-                min_col = (int) i / width;
-                min_row = (int) i % width;
-            }
-//
-//            if(intensityBuffer[i] > 99 && max_i == -1) {
-//                max_i = i;
-//            }
-//            if(intensityBuffer[i] > 99 && i > min_i) {
-//                min_i = i;
-//            }
-        }
-
-//        Log.d("Test", "min row " + min_i + ", max row " + max_i);
-//        Imgproc.circle(rgbMat, new Point(max_row, max_col), 10, new Scalar(255, 255, 255), 3);
-//        Imgproc.circle(rgbMat, new Point(min_row, min_col), 10, new Scalar(255, 255, 255), 3);
-
-
-        // Mark the support and resistance lines
-        Point pt1 = new Point(max_row - 2000, max_col);
-        Point pt2 = new Point(max_row + 2000, max_col);
-        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,0,0), 2);
-
-        Point pt3 = new Point(min_row - 2000, min_col);
-        Point pt4 = new Point(min_row + 2000, min_col);
-        Imgproc.line(rgbMat, pt3, pt4, new Scalar(0,255,0), 2);
-
-        return rgbMat;
-    }
-
     public Mat support_resistance(Mat rgbMat, byte[] intensityBuffer, int width, int height) {
-        int max_row = 0;
-        int min_row = height - 1;
-        int max_counter = 0;
-        int min_counter = 0;
+        int max_row = 100;
+        int min_row = height - 100;
+
         int current_sum = 0;
-        int col = 0;
-        int curr_row = 0;
-        int max_col = 0;
-        int min_col = 0;
 
-
-        for(int i = 0; i < width * height; ++i) {
-            if(col % width == 0) {
-                current_sum = 0;
-                ++curr_row;
+        int[] values = new int[width];
+        for (int i = 0; i < width; ++i){
+            current_sum = 0;
+            for (int j = 0; j < height; j++){
+                int pos = j*width + i;
+                int cur_val = (int)intensityBuffer[pos];
+                if (cur_val > 123){
+                    current_sum += 1;
+                    //Imgproc.circle(rgbMat, new Point(i, j), 3, new Scalar(255, 255, 255), 2);
+                }
             }
-            ++col;
-
-            int value = (int) intensityBuffer[i];
-            if (value > 0){
-                current_sum += 1;
-            }
-
-
-            if (current_sum > max_counter && i > max_row){
-                max_counter = current_sum;
-                max_row = curr_row;
-                max_col = col % width;
-            }
-            else if (current_sum > min_counter && i < min_row){
-                min_counter = current_sum;
-                min_row = curr_row;
-                min_col = col % width;
-            }
+            values[i] = current_sum;
         }
 
-        Log.d("Test", "min row " + min_row + "max row " + max_row);
+        int max_max = 0;
+        int min_max = 0;
+        max_row = -1;
+        min_row = -1;
 
-        // Mark the support and resistance lines
-        Point pt1 = new Point(max_col - 2000, max_row);
-        Point pt2 = new Point(max_col + 2000, max_row);
+        for(int i = 1; i < width - 1; ++i) {
+            //Log.d("Test", "value: " + values[i] + "   " + i);
+            int window_value = values[i];
+            if(i < width / 2 && window_value > max_max) {
+                max_row = i;
+                max_max = window_value;
+            }
+            if(i > width / 2 && window_value > min_max) {
+                min_row = i;
+                min_max = window_value;
+            }
+
+        }
+
+        Log.d("Test", "max row " + max_row + "   " + "min row: " + min_row);
+        Point pt1 = new Point(0, max_row);
+        Point pt2 = new Point(2000, max_row);
         Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
-        Point pt3 = new Point(min_col - 2000, min_row);
-        Point pt4 = new Point(min_col + 2000, min_row);
-        Imgproc.line(rgbMat, pt3, pt4, new Scalar(255,255,255), 2);
+        pt1 = new Point(0, min_row);
+        pt2 = new Point(2000, min_row);
+        Imgproc.line(rgbMat, pt1, pt2, new Scalar(255,255,255), 2);
 
         return rgbMat;
     }
