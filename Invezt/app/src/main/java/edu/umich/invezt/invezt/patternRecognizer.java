@@ -36,7 +36,7 @@ public class patternRecognizer {
 
         for(int i = 1; i < width - 1; ++i) {
             //Log.d("Test", "value: " + values[i] + "   " + i);
-            int window_value = values[i];
+            int window_value = values[i] + values[i - 1] + values[i + 1];
             if(i < width / 2 && window_value > max_max) {
                 max_row = i;
                 max_max = window_value;
