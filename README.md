@@ -1,11 +1,11 @@
 # EECS441 F20 Invezt
 
-<centering>
+<center>
 | Demo  |  Wiki |  Trello  |
 |:-----:|:-----:|:--------:|
 |![demo]|![wiki]|![process]|
 |[Demo Video][demo_page]|[Project Documentation][wiki_page]|[Agile Management Board][process_page]|
-</centering>
+</center>
 
 [demo]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/video.png "Demo Video"
 [wiki]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/wiki.png "Wiki"
