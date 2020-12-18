@@ -1,17 +1,13 @@
 # EECS441 F20 Invezt
 
-| Gradesheet | Team Info |  Wiki |  Trello   |
-|:----------:|:---------:|:-----:|:---------:|
-|![grades]|![about]|![tech]|![process]|
-|[Team Grade Sheet][grade sheet]|[Team Commitment Contract][about_page]|[Project Documentation][tech_page]|[Agile Management Board][process_page]|
+| Demo  |  Wiki |  Trello  |
+|:-----:|:-----:|:--------:|
+|![demo]|![wiki]|![process]|
+|[Demo Video][demo_page]|[Project Documentation][wiki_page]|[Agile Management Board][process_page]|
 
-[grades]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/grades3.png "Grade Sheet"
-[about]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/team.png "Team Info"
-<!-- [setup]: https://github.com/CAEN/michigan-covid19-check/blob/dev/public/tools.png "Setup and Install" -->
-[tech]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/wiki.png "Wiki"
-[process]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/board.png "Board"
-[grade sheet]: https://docs.google.com/spreadsheets/d/1F9XXVmWZhp05kIrerL8vwQGv462RLf1-dCTQMi9zeMY/edit?usp=sharing
-[about_page]: https://github.com/UM-EECS-441/invezt/blob/master/TeamCommitmentContract.pdf
-<!-- [setup_page]: https://github.com/CAEN/michigan-covid19-check/wiki/Setup-and-Install) -->
-[tech_page]: https://github.com/UM-EECS-441/invezt/wiki
+[demo]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/vido.png "Demo Video"
+[wiki]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/wiki.png "Wiki"
+[process]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/trello.png "Trello Board"
+[demo_page]: https://www.youtube.com/watch?v=h-gKeTejaN8&feature=youtu.be
+[wiki_page]: https://github.com/UM-EECS-441/invezt/wiki
 [process_page]: https://trello.com/b/672ZknRX/invezt
