@@ -4,8 +4,6 @@
 |:-----:|:-----:|:--------:|
 |![demo]|![wiki]|![process]|
 |[Demo Video][demo_page]|[Project Documentation][wiki_page]|[Agile Management Board][process_page]|
-|![Elevator Pitch](https://github.com/UM-EECS-441/labs/blob/master/docs/img/F20/Invezt.png)
-|![Team](https://github.com/UM-EECS-441/labs/blob/master/docs/img/F20/Invezt_team.png)
 
 [demo]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/video.png "Demo Video"
 [wiki]: https://github.com/UM-EECS-441/labs/blob/master/docs/img/admin/wiki.png "Wiki"
@@ -14,3 +12,7 @@
 [wiki_page]: https://github.com/UM-EECS-441/invezt/wiki
 [process_page]: https://trello.com/b/672ZknRX/invezt
 
+| |
+|-|
+|![Elevator Pitch](https://github.com/UM-EECS-441/labs/blob/master/docs/img/F20/Invezt.png)|
+|![Team](https://github.com/UM-EECS-441/labs/blob/master/docs/img/F20/Invezt_team.png)|
