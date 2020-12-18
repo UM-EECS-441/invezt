@@ -1,4 +1,4 @@
-# EECS441 F20 Invezt
+# UM EECS441 F20 Invezt
 
 
 | Demo  |  Wiki |  Trello  |
